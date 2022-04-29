@@ -55,18 +55,17 @@ public class Main {
     URLClassLoader classLoader = null;
     classLoader = URLClassLoader.newInstance(new URL[] {rulesURL});
 
-    RuleSet rules = null;
+    Game game = null;
     try {
       String rulesClassName = "TicTacToe";
       Class<?> rulesClass = classLoader.loadClass(rulesClassName);
       Constructor<?> constructor = rulesClass.getConstructor();
-      rules = (RuleSet)constructor.newInstance();
+      game = (Game)constructor.newInstance();
     } catch (Exception e) {
       e.printStackTrace();
       System.err.println(e);
+      System.err.println(e.getCause());
       System.exit(1);
     }
-
-    rules.hello();
   }
 }

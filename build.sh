@@ -7,9 +7,9 @@ echo "#!/usr/bin/java -jar" > $EXECUTABLE
 cat target/*-jar-with-dependencies.jar >> $EXECUTABLE
 chmod +x $EXECUTABLE
 
-for ruleset in src/games/*.java ; do
+for game in src/games/*.java ; do
   echo -n "Building ${ruleset} ..."
-  javac $ruleset -d games -cp $EXECUTABLE && echo " ok"
+  javac $game -d games -cp $EXECUTABLE && echo " ok"
 done
 
 popd
