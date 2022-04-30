@@ -97,8 +97,9 @@ public class Join implements Main.SubcommandHandler {
       System.err.println("screenReciever was interrupted.");
     }
 
+    keySender.interrupt();
+
     try {
-      keySender.close();
       keySender.join();
     } catch (InterruptedException e) {
       System.err.println("keySender was interrupted.");

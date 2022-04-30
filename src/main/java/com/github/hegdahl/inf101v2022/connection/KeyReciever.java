@@ -13,7 +13,6 @@ public class KeyReciever extends Thread {
   int id;
   Game game;
   Scanner reader;
-  boolean shouldExit = false;
   CountDownLatch onExit;
 
   /**
@@ -33,14 +32,10 @@ public class KeyReciever extends Thread {
     this.onExit = onExit;
   }
 
-  public void close() {
-    shouldExit = true;
-  }
-
   @Override
   public void run() {
     try {
-      while (!shouldExit) {
+      while (!Thread.currentThread().isInterrupted()) {
         
         KeyStroke keyStroke = null;
         if (reader.next().equals("c")) {

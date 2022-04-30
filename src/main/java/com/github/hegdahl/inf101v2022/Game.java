@@ -210,7 +210,7 @@ public abstract class Game {
               minPlayers()));
           foregrounds.add(new ScreenBuffer.Color(0, 0, 0));
           backgrounds.add(new ScreenBuffer.Color(255, 255, 255));
-        } else if (usernames.size() < maxPlayers()) {
+        } else if (usernames.size() > maxPlayers()) {
           lines.add(String.format(
               "Too many players. At most %s can play.",
               maxPlayers()));
@@ -287,7 +287,19 @@ public abstract class Game {
    */
   public final synchronized void unregisterUser(int id) {
     usernames.remove(id);
+    readyUsers.remove(id);
+
+    if (usernames.size() == readyUsers.size()
+        && minPlayers() <= usernames.size()
+        && usernames.size() <= maxPlayers()) {
+      init();
+    }
+
     incrementVersion();
+  }
+
+  public final synchronized String getUsername(int id) {
+    return usernames.get(id);
   }
 
   public final synchronized boolean finished() {

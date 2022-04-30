@@ -13,7 +13,6 @@ public class ScreenSender extends Thread {
   Game game;
   BufferedWriter writer;
   CountDownLatch onExit;
-  boolean shouldExit = false;
 
   /**
    * Sends what the screen should look like to a connected player.
@@ -32,17 +31,13 @@ public class ScreenSender extends Thread {
     this.onExit = onExit;
   }
 
-  public void close() {
-    shouldExit = true;
-  }
-
   @Override
   public void run() {
     ScreenBuffer screen = new ScreenBuffer();
     long lastSeenVersion = -1;
 
     try {
-      while (!shouldExit) {
+      while (!Thread.currentThread().isInterrupted()) {
         try {
           lastSeenVersion = game.paint(id, screen, lastSeenVersion);
         } catch (InterruptedException e) {

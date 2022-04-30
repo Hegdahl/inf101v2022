@@ -11,20 +11,15 @@ public class KeySender extends Thread {
 
   private Screen screen;
   private BufferedWriter writer;
-  private boolean shouldExit = false;
 
   public KeySender(Screen screen, BufferedWriter writer) {
     this.screen = screen;
     this.writer = writer;
   }
 
-  public void close() {
-    shouldExit = true;
-  }
-
   @Override
   public void run() {
-    while (!shouldExit) {
+    while (!Thread.currentThread().isInterrupted()) {
       KeyStroke keyStroke = null;
       try {
         keyStroke = screen.pollInput();

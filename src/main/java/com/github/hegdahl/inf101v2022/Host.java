@@ -71,6 +71,11 @@ public class Host implements Main.SubcommandHandler {
         } catch (InterruptedException e) {
           interrupt();
           return;
+        } finally {
+          System.err.printf("\"%s\" disconnected.\n",
+              game.getUsername(id));
+          screenSenderThread.interrupt();
+          keyRecieverThread.interrupt();
         }
 
         try {
@@ -88,8 +93,6 @@ public class Host implements Main.SubcommandHandler {
         }
 
       } finally {
-        screenSenderThread.close();
-        keyRecieverThread.close();
         game.unregisterUser(id);
       }
     }

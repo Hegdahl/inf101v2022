@@ -23,7 +23,7 @@ public class ScreenReciever extends Thread {
   public void run() {
     TerminalSize terminalSize = screen.getTerminalSize();
     try {
-      while (true) {
+      while (!Thread.currentThread().isInterrupted()) {
         TerminalSize newTerminalSize = screen.doResizeIfNecessary();
         if (newTerminalSize != null) {
           terminalSize = newTerminalSize;
