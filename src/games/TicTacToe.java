@@ -31,9 +31,6 @@ public class TicTacToe extends Game {
           board[i][j] = PlayerTag.NONE;
         }
       }
-
-      board[0][0] = PlayerTag.X;
-      board[2][2] = PlayerTag.O;
     }
 
     private boolean checkWon(PlayerTag player) {
