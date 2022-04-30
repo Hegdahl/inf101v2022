@@ -1,6 +1,6 @@
-import java.io.Console;
-
 import com.github.hegdahl.inf101v2022.Game;
+
+import java.io.Console;
 
 public class TicTacToe extends Game {
 
@@ -38,41 +38,57 @@ public class TicTacToe extends Game {
     private boolean checkWon(PlayerTag player) {
 
       outer: for (int row = 0; row < 3; ++row) {
-        for (int col = 0; col < 3; ++col)
-          if (board[row][col] != player)
+        for (int col = 0; col < 3; ++col) {
+          if (board[row][col] != player) {
             continue outer;
+          }
+        }
         return true;
       }
 
       outer: for (int col = 0; col < 3; ++col) {
-        for (int row = 0; row < 3; ++row)
-          if (board[row][col] != player)
+        for (int row = 0; row < 3; ++row) {
+          if (board[row][col] != player) {
             continue outer;
+          }
+        }
         return true;
       }
 
       boolean diag = true;
-      for (int i = 0; i < 3; ++i)
+      for (int i = 0; i < 3; ++i) {
         diag &= board[i][i] == player;
-      if (diag) return true;
+      }
+      if (diag) {
+        return true;
+      }
 
       diag = true;
-      for (int i = 0; i < 3; ++i)
-        diag &= board[i][3-i-1] == player;
-      if (diag) return true;
+      for (int i = 0; i < 3; ++i) {
+        diag &= board[i][3 - i - 1] == player;
+      }
+      if (diag) {
+        return true;
+      }
 
       return false;
     }
 
     private PlayerTag winner() {
-      boolean xWon = checkWon(PlayerTag.X);
-      boolean oWon = checkWon(PlayerTag.O);
+      boolean playerXWon = checkWon(PlayerTag.X);
+      boolean playerOWon = checkWon(PlayerTag.O);
 
-      if (xWon && oWon)
+      if (playerXWon && playerOWon) {
         throw new IllegalStateException("Both players completed 3 in a row.");
+      }
       
-      if (xWon) return PlayerTag.X;
-      if (oWon) return PlayerTag.O;
+      if (playerXWon) {
+        return PlayerTag.X;
+      }
+
+      if (playerOWon) {
+        return PlayerTag.O;
+      }
 
       return PlayerTag.NONE;
     }

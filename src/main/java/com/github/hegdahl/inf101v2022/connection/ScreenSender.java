@@ -1,11 +1,11 @@
 package com.github.hegdahl.inf101v2022.connection;
 
+import com.github.hegdahl.inf101v2022.Game;
+import com.github.hegdahl.inf101v2022.ScreenBuffer;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
-
-import com.github.hegdahl.inf101v2022.Game;
-import com.github.hegdahl.inf101v2022.ScreenBuffer;
 
 public class ScreenSender extends Thread {
 
@@ -15,6 +15,16 @@ public class ScreenSender extends Thread {
   CountDownLatch onExit;
   boolean shouldExit = false;
 
+  /**
+   * Sends what the screen should look like to a connected player.
+   * 
+   * @param id     unique id for the connection
+   *               the screen is sent to
+   * @param game   the game to get a visual representation of
+   * @param writer Stream object to send the screen data to
+   * @param onExit Latch used as a callback to tell
+   *               invoker that the the loop finished
+   */
   public ScreenSender(int id, Game game, BufferedWriter writer, CountDownLatch onExit) {
     this.id = id;
     this.game = game;
@@ -25,20 +35,28 @@ public class ScreenSender extends Thread {
   public void close() {
     shouldExit = true;
   }
-  
+
   @Override
   public void run() {
-    int h = game.screenHeight();
-    int w = game.screenWidth();
-    ScreenBuffer screen = new ScreenBuffer(h, w);
+    ScreenBuffer screen = new ScreenBuffer();
 
     try {
       while (!shouldExit) {
-        game.paint(id, screen);
-        writer.write(h + " " + w + " ");
-        for (int i = 0; i < h; ++i)
-          for (int j = 0; j < w; ++j)
+        try {
+          game.paint(id, screen);
+        } catch (InterruptedException e) {
+          interrupt();
+          return;
+        }
+
+        int h = screen.height();
+        int w = screen.width();
+        writer.write(String.format("%s %s ", h, w));
+        for (int i = 0; i < h; ++i) {
+          for (int j = 0; j < w; ++j) {
             writer.write(screen.get(i, j).toString());
+          }
+        }
         writer.write('\n');
         writer.flush();
       }

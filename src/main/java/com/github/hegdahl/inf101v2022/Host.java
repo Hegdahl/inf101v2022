@@ -1,5 +1,8 @@
 package com.github.hegdahl.inf101v2022;
 
+import com.github.hegdahl.inf101v2022.connection.KeyReciever;
+import com.github.hegdahl.inf101v2022.connection.ScreenSender;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,9 +17,6 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
-
-import com.github.hegdahl.inf101v2022.connection.KeyReciever;
-import com.github.hegdahl.inf101v2022.connection.ScreenSender;
 
 import net.sourceforge.argparse4j.inf.Namespace;
 
@@ -65,24 +65,33 @@ public class Host implements Main.SubcommandHandler {
       screenSenderThread.start();
 
       try {
-        exitLatch.await();
-      } catch (InterruptedException e) {
+
+        try {
+          exitLatch.await();
+        } catch (InterruptedException e) {
+          interrupt();
+          return;
+        }
+
+        try {
+          screenSenderThread.join();
+        } catch (InterruptedException e) {
+          interrupt();
+          return;
+        }
+
+        try {
+          keyRecieverThread.join();
+        } catch (InterruptedException e) {
+          interrupt();
+          return;
+        }
+
+      } finally {
+        screenSenderThread.close();
+        keyRecieverThread.close();
+        game.unregisterUser(id);
       }
-
-      screenSenderThread.close();
-      keyRecieverThread.close();
-
-      try {
-        screenSenderThread.join();
-      } catch (InterruptedException e) {
-      }
-
-      try {
-        keyRecieverThread.join();
-      } catch (InterruptedException e) {
-      }
-
-      game.unregisterUser(id);
     }
   }
 
@@ -103,9 +112,9 @@ public class Host implements Main.SubcommandHandler {
       System.exit(1);
     }
 
-    URL rulesURL = null;
+    URL rulesUrl = null;
     try {
-      rulesURL = rulesFile.getParentFile().toURI().toURL();
+      rulesUrl = rulesFile.getParentFile().toURI().toURL();
     } catch (IOException e) {
       e.printStackTrace();
       System.err.println(e);
@@ -113,7 +122,7 @@ public class Host implements Main.SubcommandHandler {
     }
 
     URLClassLoader classLoader = null;
-    classLoader = URLClassLoader.newInstance(new URL[] { rulesURL });
+    classLoader = URLClassLoader.newInstance(new URL[] { rulesUrl });
 
     Game game = null;
     try {
@@ -141,13 +150,15 @@ public class Host implements Main.SubcommandHandler {
       clientHandlers.add(clientHandler);
     }
 
-    for (ClientHandler clientHandler : clientHandlers)
+    for (ClientHandler clientHandler : clientHandlers) {
       clientHandler.close();
+    }
 
     for (ClientHandler clientHandler : clientHandlers) {
       try {
         clientHandler.join();
       } catch (InterruptedException e) {
+        System.err.printf("%s was interrupted.", clientHandler.id);
       }
     }
 

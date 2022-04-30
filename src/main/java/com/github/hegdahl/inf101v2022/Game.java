@@ -1,9 +1,9 @@
 package com.github.hegdahl.inf101v2022;
 
+import com.googlecode.lanterna.input.KeyStroke;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.googlecode.lanterna.input.KeyStroke;
 
 public abstract class Game {
   
@@ -19,25 +19,36 @@ public abstract class Game {
 
   }
 
-  abstract protected Model makeModel(int numberOfPlayers);
-  abstract protected View makeView(int playerIndex);
-  abstract protected Controller makeController(int playerIndex);
+  protected abstract Model makeModel(int numberOfPlayers);
 
-  abstract public int minPlayers();
-  abstract public int maxPlayers();
+  protected abstract View makeView(int playerIndex);
+
+  protected abstract Controller makeController(int playerIndex);
+
+  public abstract int minPlayers();
+
+  public abstract int maxPlayers();
   
-  abstract public int screenWidth();
-  abstract public int screenHeight();
-
   protected Model model;
   protected View[] views;
   protected Controller[] controllers;
 
   private Map<Integer, String> usernames;
 
-  public final void init(int numberOfPlayers) {
-    if (minPlayers() > numberOfPlayers || numberOfPlayers > maxPlayers())
-      throw new IllegalArgumentException("Number of players must be in [0, 1]");
+  private boolean gameStarted = false;
+
+  private final synchronized void init() {
+    if (gameStarted) {
+      throw new IllegalStateException("Game already started");
+    }
+    gameStarted = true;
+
+    int numberOfPlayers = usernames.size();
+
+    if (minPlayers() > numberOfPlayers || numberOfPlayers > maxPlayers()) {
+      throw new IllegalStateException(String.format(
+          "Number of players must be in [%s, %s]", minPlayers(), maxPlayers()));
+    }
 
     model = makeModel(numberOfPlayers);
     views = new View[numberOfPlayers];
@@ -57,31 +68,51 @@ public abstract class Game {
     System.err.println("Game::trigger " + id + ":" + keyStroke);
   }
 
-  public final boolean paint(int id, ScreenBuffer canvas) {
+  /**
+   * Request for a new frame
+   * to be stored in canvas.
+   * 
+   * @param id     unique id for the user requesting the frame
+   * @param canvas where to store the frame.
+   */
+  public final boolean paint(int id, ScreenBuffer canvas) throws InterruptedException {
     System.err.println("Game::paint " + id + ":" + canvas);
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-    }
+    Thread.sleep(1000);
     return true;
   }
 
-  public final void registerUser(int id, String username) {
+  /**
+   * Inform the game that a new user connected.
+   * 
+   * @param id       unique id representing the user
+   * @param username name picked by the user,
+   *                 not neccesarily unique.
+   */
+  public final synchronized void registerUser(int id, String username) {
     usernames.put(id, username);
     System.err.printf("\"%s\" connected.\n", username);
     logOnline();
   }
 
-  public final void unregisterUser(int id) {
+  /**
+   * Inform the game that a user disconnected.
+   * 
+   * @param id unique id representing the user
+   */
+  public final synchronized void unregisterUser(int id) {
     System.err.printf("\"%s\" disconnected.\n", usernames.get(id));
     usernames.remove(id);
     logOnline();
   }
 
-  public final void logOnline() {
+  /**
+   * Print a list of currently connected users to stderr.
+   */
+  public final synchronized void logOnline() {
     System.err.println("Currently connected: [");
-    for (String username : usernames.values())
+    for (String username : usernames.values()) {
       System.err.println("    " + username);
+    }
     System.err.println("]");
   }
 

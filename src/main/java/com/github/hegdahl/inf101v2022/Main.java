@@ -12,17 +12,28 @@ public class Main {
   public interface SubcommandHandler {
     public void main(Namespace ns) throws IOException;
   }
+
+  /**
+   * Either start hosting a game or connect to one,
+   * depending on command line arguments.
+   * 
+   * <p>For a more detailed description,
+   * use `./resulting_executable --help`
+   * or `./resulting_executable SUBCOMMAND --help`.
+   * 
+   * @param args command line arguments
+   */
   public static void main(String[] args) {
     ArgumentParser rootParser = ArgumentParsers.newFor("inf101v2022").build()
-      .description("Framework for board-like games in the terminal.");
+        .description("Framework for board-like games in the terminal.");
     
     Subparsers subparsers = rootParser.addSubparsers().title("subcommands")
-          .description("valid subcommands").help("additional help")
-          .metavar("COMMAND");
+        .description("valid subcommands").help("additional help")
+        .metavar("COMMAND");
 
     Subparser hostParser = subparsers.addParser("host")
-      .help("Host a game server.")
-      .setDefault("handler", new Host());
+        .help("Host a game server.")
+        .setDefault("handler", new Host());
 
     hostParser.addArgument("rulesPath")
       .type(String.class)
@@ -34,16 +45,16 @@ public class Main {
       .setDefault((short) 8080);
 
     Subparser joinParser = subparsers.addParser("join")
-      .help("Join a game hosted on some server.")
-      .setDefault("handler", new Join());
+        .help("Join a game hosted on some server.")
+        .setDefault("handler", new Join());
 
     joinParser.addArgument("username")
-      .type(String.class)
-      .help("The name the other players see you as.");
+        .type(String.class)
+        .help("The name the other players see you as.");
 
     joinParser.addArgument("address")
-      .type(String.class)
-      .help("Which IP address to connect to");
+        .type(String.class)
+        .help("Which IP address to connect to");
 
     joinParser.addArgument("-p", "--port")
       .type(Short.class)
