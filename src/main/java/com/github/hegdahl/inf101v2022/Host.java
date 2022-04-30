@@ -57,9 +57,9 @@ public class Host implements Main.SubcommandHandler {
       System.err.printf("\"%s\" connected from %s:%s\n",
           username, socket.getInetAddress(), socket.getPort());
 
-      game.setUsername(id, username);
-      KeyReciever keyRecieverThread = new KeyReciever(id, game, reader);
-      ScreenSender screenSenderThread = new ScreenSender(id, game, writer);
+      game.registerUser(id, username);
+      KeyReciever keyRecieverThread = new KeyReciever(id, game, reader, exitLatch);
+      ScreenSender screenSenderThread = new ScreenSender(id, game, writer, exitLatch);
 
       keyRecieverThread.start();
       screenSenderThread.start();
@@ -81,6 +81,8 @@ public class Host implements Main.SubcommandHandler {
         keyRecieverThread.join();
       } catch (InterruptedException e) {
       }
+
+      game.unregisterUser(id);
     }
   }
 

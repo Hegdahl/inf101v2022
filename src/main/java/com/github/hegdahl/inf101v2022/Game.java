@@ -66,8 +66,23 @@ public abstract class Game {
     return true;
   }
 
-  public final void setUsername(int id, String username) {
+  public final void registerUser(int id, String username) {
     usernames.put(id, username);
+    System.err.printf("\"%s\" connected.\n", username);
+    logOnline();
+  }
+
+  public final void unregisterUser(int id) {
+    System.err.printf("\"%s\" disconnected.\n", usernames.get(id));
+    usernames.remove(id);
+    logOnline();
+  }
+
+  public final void logOnline() {
+    System.err.println("Currently connected: [");
+    for (String username : usernames.values())
+      System.err.println("    " + username);
+    System.err.println("]");
   }
 
   public final String getUsername(int id) {

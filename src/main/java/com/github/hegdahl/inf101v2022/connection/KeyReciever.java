@@ -2,6 +2,7 @@ package com.github.hegdahl.inf101v2022.connection;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
 
 import com.github.hegdahl.inf101v2022.Game;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -13,11 +14,13 @@ public class KeyReciever extends Thread {
   Game game;
   Scanner reader;
   boolean shouldExit = false;
+  CountDownLatch onExit;
 
-  public KeyReciever(int id, Game game, Scanner reader) {
+  public KeyReciever(int id, Game game, Scanner reader, CountDownLatch onExit) {
     this.id = id;
     this.game = game;
     this.reader = reader;
+    this.onExit = onExit;
   }
 
   public void close() {
@@ -40,6 +43,8 @@ public class KeyReciever extends Thread {
       }
     } catch (NoSuchElementException e) {
       System.err.println("Failed to read from socket " + id + ". Assuming it disconnected");
+    } finally {
+      onExit.countDown();
     }
   }
 }
