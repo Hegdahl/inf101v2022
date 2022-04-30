@@ -1,71 +1,66 @@
 package com.github.hegdahl.inf101v2022;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.lang.reflect.Constructor;
 import net.sourceforge.argparse4j.ArgumentParsers;
-import net.sourceforge.argparse4j.helper.HelpScreenException;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
-import net.sourceforge.argparse4j.inf.ArgumentParserException;
 import net.sourceforge.argparse4j.inf.Namespace;
+import net.sourceforge.argparse4j.inf.Subparser;
+import net.sourceforge.argparse4j.inf.Subparsers;
 
 public class Main {
 
+  public interface SubcommandHandler {
+    public void main(Namespace ns) throws IOException;
+  }
   public static void main(String[] args) {
-    ArgumentParser parser = ArgumentParsers.newFor("prog").build()
-      .description("Just checking that dependencies load.");
-    parser.addArgument("rules_path")
+    ArgumentParser rootParser = ArgumentParsers.newFor("inf101v2022").build()
+      .description("Framework for board-like games in the terminal.");
+    
+    Subparsers subparsers = rootParser.addSubparsers().title("subcommands")
+          .description("valid subcommands").help("additional help")
+          .metavar("COMMAND");
+
+    Subparser hostParser = subparsers.addParser("host")
+      .help("Host a game server.")
+      .setDefault("handler", new Host());
+
+    hostParser.addArgument("rulesPath")
       .type(String.class)
       .help(".class file contianing the ruleset for the game.");
 
-    Namespace ns = null;
+    hostParser.addArgument("-p", "--port")
+      .type(Short.class)
+      .help("Which port to bind the server to.")
+      .setDefault((short) 8080);
+
+    Subparser joinParser = subparsers.addParser("join")
+      .help("Join a game hosted on some server.")
+      .setDefault("handler", new Join());
+
+    joinParser.addArgument("username")
+      .type(String.class)
+      .help("The name the other players see you as.");
+
+    joinParser.addArgument("address")
+      .type(String.class)
+      .help("Which IP address to connect to");
+
+    joinParser.addArgument("-p", "--port")
+      .type(Short.class)
+      .help("Which port to connect to.")
+      .setDefault((short) 8080);
+
+
+    Namespace ns = rootParser.parseArgsOrFail(args);
+
     try {
-      ns = parser.parseArgs(args);
-    } catch (HelpScreenException e) {
-      parser.handleError(e);
-      System.exit(0);
-    } catch (ArgumentParserException e) {
-      parser.handleError(e);
-      System.exit(1);
-    }
-
-    String rulesPath = ns.getString("rules_path");
-    File rulesFile = new File(rulesPath);
-    if (!rulesFile.exists()) {
-      System.err.println("Error: Could not find file '" + rulesFile + "'");
-      System.exit(1);
-    }
-
-    if (!rulesFile.isFile()) {
-      System.err.println("Error: '" + rulesFile + "' is not a file.");
-      System.exit(1);
-    }
-
-    URL rulesURL = null;
-    try {
-      rulesURL = rulesFile.getParentFile().toURI().toURL();
+      ((SubcommandHandler)ns.get("handler")).main(ns);
     } catch (IOException e) {
-      e.printStackTrace();
-      System.err.println(e);
-      System.exit(1);
-    }
-
-    URLClassLoader classLoader = null;
-    classLoader = URLClassLoader.newInstance(new URL[] {rulesURL});
-
-    Game game = null;
-    try {
-      String rulesClassName = "TicTacToe";
-      Class<?> rulesClass = classLoader.loadClass(rulesClassName);
-      Constructor<?> constructor = rulesClass.getConstructor();
-      game = (Game)constructor.newInstance();
-    } catch (Exception e) {
       e.printStackTrace();
       System.err.println(e);
       System.err.println(e.getCause());
       System.exit(1);
     }
   }
+
 }
