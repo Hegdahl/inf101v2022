@@ -39,11 +39,12 @@ public class ScreenSender extends Thread {
   @Override
   public void run() {
     ScreenBuffer screen = new ScreenBuffer();
+    long lastSeenVersion = -1;
 
     try {
       while (!shouldExit) {
         try {
-          game.paint(id, screen);
+          lastSeenVersion = game.paint(id, screen, lastSeenVersion);
         } catch (InterruptedException e) {
           interrupt();
           return;
@@ -54,7 +55,7 @@ public class ScreenSender extends Thread {
         writer.write(String.format("%s %s ", h, w));
         for (int i = 0; i < h; ++i) {
           for (int j = 0; j < w; ++j) {
-            writer.write(screen.get(i, j).toString());
+            writer.write(screen.get(i, j) + " ");
           }
         }
         writer.write('\n');

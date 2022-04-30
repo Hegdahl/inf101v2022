@@ -2,30 +2,48 @@ package com.github.hegdahl.inf101v2022;
 
 public class ScreenBuffer {
 
-  public class Cell {
-    public final char ch;
-    public final int fr;
-    public final int fg;
-    public final int fb;
-    public final int br;
-    public final int bg;
-    public final int bb;
+  public static class Color {
+    public final int red;
+    public final int green;
+    public final int blue;
 
-    Cell(char ch, int fr, int fg, int fb, int br, int bg, int bb) {
-      this.ch = ch;
-      this.fr = fr;
-      this.fg = fg;
-      this.fb = fb;
-      this.br = br;
-      this.bg = bg;
-      this.bb = bb;
+    /**
+     * Color represented by red, green and blue
+     * values in the range [0, 256).
+    */
+    public Color(int red, int green, int blue) {
+      this.red = red;
+      this.green = green;
+      this.blue = blue;
     }
 
     @Override
     public String toString() {
-      return (int) ch + " "
-          + fr + " " + fg + " " + fb + " "
-          + br + " " + bg + " " + bb + " ";
+      return String.format("%s %s %s", red, green, blue);
+    }
+  }
+
+  public static class Cell {
+    public final char ch;
+    Color foreground;
+    Color background;
+
+    /**
+     * Represents a character with a foreground and background color.
+     */
+    public Cell(char ch, Color foreground, Color background) {
+      this.ch = ch;
+      this.foreground = foreground;
+      this.background = background;
+    }
+
+    public Cell(char ch, int fr, int fg, int fb, int br, int bg, int bb) {
+      this(ch, new Color(fr, fg, fb), new Color(br, bg, bb));
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%s %s %s", (int)ch, foreground, background);
     }
   }
 
@@ -68,11 +86,40 @@ public class ScreenBuffer {
   }
 
   public Cell get(int row, int column) {
+    assertWithinBounds(row, column);
     return cells[row][column];
   }
 
   public void set(int row, int column, Cell cell) {
+    assertWithinBounds(row, column);
     cells[row][column] = cell;
   }
 
+  /**
+   * Write horizontally.
+   * 
+   * @param row        vertical position of text
+   * @param column     horizontal position of start of text
+   * @param text       what to write
+   * @param foreground color of the characters
+   * @param background color of the backgroudn
+   */
+  public void write(int row, int column, String text, Color foreground, Color background) {
+    for (int i = 0; i < text.length(); ++i) {
+      set(row, column + i, new Cell(text.charAt(i), foreground, background));
+    }
+  }
+
+  private void assertWithinBounds(int row, int column) {
+    if (0 > row || row >= height()) {
+      throw new IndexOutOfBoundsException(String.format(
+          "The row %s is out of bounds for a buffer of height %s.",
+          row, height()));
+    }
+    if (0 > column || column >= width()) {
+      throw new IndexOutOfBoundsException(String.format(
+          "The column %s is out of bounds for a buffer of width %s.",
+          column, width()));
+    }
+  }
 }

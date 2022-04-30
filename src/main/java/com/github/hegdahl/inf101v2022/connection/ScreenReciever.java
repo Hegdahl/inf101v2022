@@ -29,6 +29,8 @@ public class ScreenReciever extends Thread {
           terminalSize = newTerminalSize;
         }
 
+        screen.clear();
+
         int h = reader.nextInt();
         int w = reader.nextInt();
 

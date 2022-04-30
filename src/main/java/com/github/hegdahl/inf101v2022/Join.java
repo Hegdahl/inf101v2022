@@ -31,6 +31,15 @@ public class Join implements Main.SubcommandHandler {
     String address = ns.getString("address");
     short port = ns.getShort("port");
 
+    Socket socket = null;
+    try {
+      socket = new Socket(address, port);
+    } catch (IOException e) {
+      System.err.println(e);
+      System.err.printf("Failed connecting to %s:%s.\n", address, port);
+      System.exit(1);
+    }
+
     Screen screen = null;
     try {
       screen = (new DefaultTerminalFactory()).createScreen();
@@ -44,14 +53,6 @@ public class Join implements Main.SubcommandHandler {
 
     screen.setCursorPosition(null);
 
-    Socket socket = null;
-    try {
-      socket = new Socket(address, port);
-    } catch (IOException e) {
-      System.err.println(e);
-      System.err.printf("Failed connecting to %s:%s.\n", address, port);
-      System.exit(1);
-    }
 
     BufferedWriter writer = null;
     try {

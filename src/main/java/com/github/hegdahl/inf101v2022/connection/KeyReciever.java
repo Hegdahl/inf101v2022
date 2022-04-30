@@ -49,7 +49,7 @@ public class KeyReciever extends Thread {
           keyStroke = new KeyStroke(KeyType.values()[reader.nextInt()]);
         }
         
-        game.trigger(id, keyStroke);
+        game.triggerKey(id, keyStroke);
       }
     } catch (NoSuchElementException e) {
       System.err.println("Failed to read from socket " + id + ". Assuming it disconnected");
