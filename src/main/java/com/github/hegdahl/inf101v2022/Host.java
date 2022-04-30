@@ -1,8 +1,5 @@
 package com.github.hegdahl.inf101v2022;
 
-import com.github.hegdahl.inf101v2022.connection.KeyReciever;
-import com.github.hegdahl.inf101v2022.connection.ScreenSender;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,6 +14,9 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
+
+import com.github.hegdahl.inf101v2022.connection.KeyReciever;
+import com.github.hegdahl.inf101v2022.connection.ScreenSender;
 
 import net.sourceforge.argparse4j.inf.Namespace;
 
@@ -129,7 +129,10 @@ public class Host implements Main.SubcommandHandler {
 
     Game game = null;
     try {
-      String rulesClassName = "TicTacToe";
+      String rulesClassName = rulesFile.getName();
+      int dotPosition = rulesClassName.lastIndexOf('.');
+      rulesClassName = rulesClassName.substring(0, dotPosition);
+
       Class<?> rulesClass = classLoader.loadClass(rulesClassName);
       Constructor<?> constructor = rulesClass.getConstructor();
       game = (Game) constructor.newInstance();
