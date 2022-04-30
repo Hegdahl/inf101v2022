@@ -17,30 +17,95 @@ import java.util.function.Supplier;
  */
 public abstract class Game {
   
+  /**
+   * Interface for classes
+   * that represent game state,
+   * with methods acting on the game state.
+   * 
+   * <p>The model is given to the constructor
+   * for both view and controller.
+   */
   public interface Model {
 
   }
 
+  /**
+   * Interface for classes whose
+   * job is to create a visual
+   * representation of a model
+   * for a specific player.
+   */
   public abstract class View {
-    public abstract void paint(ScreenBuffer canvas);
 
-    public final int userIndex;
+    /**
+     * Number in [0, numberOfPlayers)
+     * representing which user uses
+     * this view to request frames.
+     */
+    protected final int userIndex;
 
+    /**
+     * Creates a View for the given user.
+     * 
+     * @param userIndex number in [0, numberOfPlayers)
+     *                  representing which user uses
+     *                  this view to request frames
+     */
     public View(int userIndex) {
       this.userIndex = userIndex;
     }
+
+    /**
+     * Creates frames of the game state of the model
+     * (should be stored by the descendant
+     * class to avoid type casting).
+     * 
+     * @param canvas where to store the frame
+     */
+    public abstract void paint(ScreenBuffer canvas);
+
   }
 
+  /**
+   * Interface for classes whose
+   * job is to map key input from
+   * a specific user to state modifyin
+   * methods on a model.
+   */
   public abstract class Controller {
-    public final int userIndex;
+
+    /**
+     * Number in [0, numberOfPlayers)
+     * representing which user is responsible
+     * for keystrokes sent to this controller.
+     */
+    protected final int userIndex;
 
     private Map<KeyStroke, List<Supplier<Boolean>>> keybinds;
 
+    /**
+     * Constructs the controller for the given user.
+     * 
+     * @param userIndex number in [0, numberOfPlayers)
+     *                  representing which user is responsible
+     *                  for keystrokes sent to this controller.
+     */
     public Controller(int userIndex) {
       this.userIndex = userIndex;
       keybinds = new HashMap<>();
     }
 
+    /**
+     * Binds an action to a key.
+     * 
+     * <p>The action should return true
+     * if it succeeded, and false otherwise
+     * to allow more actions to be bound to
+     * the same key.
+     * 
+     * @param keyStroke the key that triggers will trigger this action
+     * @param action    function object containing the method
+     */
     protected void registerKeybind(KeyStroke keyStroke, Supplier<Boolean> action) {
       keybinds.put(keyStroke, new ArrayList<>());
       keybinds.get(keyStroke).add(action);
@@ -67,14 +132,55 @@ public abstract class Game {
 
   }
 
+  /**
+   * Wrapper for the constructor of the
+   * `Model` implementation of the game.
+   * 
+   * <p>It is used to allow type safe
+   * dynamic loading of game rules.
+   */
   protected abstract Model makeModel(int numberOfPlayers);
 
+  /**
+   * Wrapper for the constructor of the
+   * `View` implementation of the game.
+   * 
+   * <p>It is used to allow type safe
+   * dynamic loading of game rules.
+   * 
+   * @param model       reference to the model this view should
+   *                    create frames for.
+   * @param playerIndex number in [0, numberOfPlayers)
+   *                    representing the player that the
+   *                    created view should make frames for
+   */
   protected abstract View makeView(Model model, int playerIndex);
 
+  /**
+   * Wrapper for the constructor of the
+   * `Controller` implementation of the game.
+   * 
+   * <p>It is used to allow type safe
+   * dynamic loading of game rules.
+   * 
+   * @param model       reference to the model this
+   *                    view should do request actions on
+   * @param playerIndex number in [0, numberOfPlayers)
+   *                    representing the player that the
+   *                    created controller should act as
+   */
   protected abstract Controller makeController(Model model, int playerIndex);
 
+  /**
+   * Sets a minimum for how many players
+   * there can be in a single game.
+   */
   public abstract int minPlayers();
 
+  /**
+   * Sets a maximum for how many players
+   * there can be in a single game.
+   */
   public abstract int maxPlayers();
   
   private Model model;
@@ -134,6 +240,11 @@ public abstract class Game {
     userIndieces = new HashMap<>();
   }
 
+  /**
+   * Tell the threads that are waiting
+   * for a new frame that the game
+   * state chnaged (and is thus in a new version).
+   */
   private final void incrementVersion() {
     synchronized (stateVersionTrigger) {
       ++stateVersion;
@@ -181,8 +292,12 @@ public abstract class Game {
    * Request for a new frame
    * to be stored in canvas.
    * 
-   * @param id     unique id for the user requesting the frame
-   * @param canvas where to store the frame.
+   * <p>Blocks until there is new game state.
+   * 
+   * @param id              unique id for the user requesting the frame
+   * @param canvas          where to store the frame.
+   * @param lastSeenVersion number representing the game state
+   *                        at the last frame given to this user
    */
   public final long paint(int id, ScreenBuffer canvas, long lastSeenVersion)
       throws InterruptedException {
@@ -313,11 +428,19 @@ public abstract class Game {
     incrementVersion();
   }
 
+  /**
+   * Finds the username for a connected
+   * user given the user's unique id.
+   */
   public final synchronized String getUsername(int id) {
     return usernames.get(id);
   }
 
-  public final synchronized boolean finished() {
+  /**
+   * Finds the username for a connected
+   * user given the user's unique id.
+   */
+  public synchronized boolean finished() {
     return false;
   }
 

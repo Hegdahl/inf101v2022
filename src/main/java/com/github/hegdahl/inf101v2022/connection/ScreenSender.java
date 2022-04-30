@@ -7,6 +7,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * Sends frames to a `ScreenReciever`
+ * over the network.
+ */
 public class ScreenSender extends Thread {
 
   int id;
@@ -15,7 +19,11 @@ public class ScreenSender extends Thread {
   CountDownLatch onExit;
 
   /**
-   * Sends what the screen should look like to a connected player.
+   * Constructs the ScreenSender without starting
+   * the forwarding.
+   * 
+   * <p>The forwarding is done in the current thread using
+   * .run(), or in a new thread usign .start().
    * 
    * @param id     unique id for the connection
    *               the screen is sent to
@@ -31,6 +39,9 @@ public class ScreenSender extends Thread {
     this.onExit = onExit;
   }
 
+  /**
+   * Send frames until interrupted.
+   */
   @Override
   public void run() {
     ScreenBuffer screen = new ScreenBuffer();

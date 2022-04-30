@@ -9,16 +9,33 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Listenes for frames sent by `ScreenSender`
+ * from the server and shows them in the terminal.
+ */
 public class ScreenReciever extends Thread {
 
   Screen screen;
   Scanner reader;
 
+  /**
+   * Constructs the ScreenSender without starting
+   * the forwarding.
+   * 
+   * <p>The forwarding is done in the current thread using
+   * .run(), or in a new thread usign .start().
+   * 
+   * @param screen lanterna Screen object to write frames to
+   * @param reader stream object to read frames from
+   */
   public ScreenReciever(Screen screen, Scanner reader) {
     this.screen = screen;
     this.reader = reader;
   }
 
+  /**
+   * Listen for frames until interrupted.
+   */
   @Override
   public void run() {
     TerminalSize terminalSize = screen.getTerminalSize();

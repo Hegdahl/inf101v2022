@@ -20,6 +20,11 @@ import java.util.concurrent.CountDownLatch;
 
 import net.sourceforge.argparse4j.inf.Namespace;
 
+/**
+ * Used when the program is started with the `host` subcommand.
+ * 
+ * <p>Starts a server accepting connections from players.
+ */
 public class Host implements Main.SubcommandHandler {
 
   class ClientHandler extends Thread {
@@ -114,7 +119,7 @@ public class Host implements Main.SubcommandHandler {
   }
 
   @Override
-  public void main(Namespace ns) throws IOException {
+  public void main(Namespace ns) {
 
     String rulesPath = ns.getString("rulesPath");
     System.err.println("rulesPath: " + rulesPath);
@@ -160,15 +165,26 @@ public class Host implements Main.SubcommandHandler {
 
     short port = ns.getShort("port");
 
-    ServerSocket serverSocket = new ServerSocket(port);
+    ServerSocket serverSocket = null;
+    try {
+      serverSocket = new ServerSocket(port);
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.err.println(e);
+      System.exit(1);
+    }
     System.out.println("Listening on port " + port);
 
     ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
 
     while (!game.finished()) {
-      ClientHandler clientHandler = new ClientHandler(game, serverSocket.accept());
-      clientHandler.start();
-      clientHandlers.add(clientHandler);
+      try {
+        ClientHandler clientHandler = new ClientHandler(game, serverSocket.accept());
+        clientHandler.start();
+        clientHandlers.add(clientHandler);
+      } catch (IOException e) {
+        System.err.println(e);
+      }
     }
 
     for (ClientHandler clientHandler : clientHandlers) {
@@ -183,6 +199,12 @@ public class Host implements Main.SubcommandHandler {
       }
     }
 
-    serverSocket.close();
+    try {
+      serverSocket.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.err.println(e);
+      System.err.println("Failed closing server.");
+    }
   }
 }

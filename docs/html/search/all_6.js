@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['main_0',['Main',['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Main.html',1,'com::github::hegdahl::inf101v2022']]],
+  ['main_1',['main',['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Host.html#a523aaba91aba904a89ae490ef5510b11',1,'com.github.hegdahl.inf101v2022.Host.main()'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Join.html#abafbe8cdda73aa6b96dc5906c7246e0b',1,'com.github.hegdahl.inf101v2022.Join.main()'],['../interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Main_1_1SubcommandHandler.html#a642b6fc7ab3b3e931f8177bd203442ed',1,'com.github.hegdahl.inf101v2022.Main.SubcommandHandler.main()'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Main.html#a31cb3e22af24681fb76c456001360ef2',1,'com.github.hegdahl.inf101v2022.Main.main()']]],
+  ['makecontroller_2',['makeController',['../classTicTacToe.html#a020eefc74849b27c33a518aa9bd5af0b',1,'TicTacToe.makeController()'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game.html#a5a12d989e41000eada28bd28ee341c9c',1,'com.github.hegdahl.inf101v2022.Game.makeController()']]],
+  ['makemodel_3',['makeModel',['../classTicTacToe.html#a1332dfeec09320eb6dfd7a6fcf2469d6',1,'TicTacToe.makeModel()'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game.html#a895c1d118e2bfa3ba76373641085a55e',1,'com.github.hegdahl.inf101v2022.Game.makeModel()']]],
+  ['makeview_4',['makeView',['../classTicTacToe.html#a035cf624e1afa70bd266deac7d8f4e29',1,'TicTacToe.makeView()'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game.html#a1887f98a8d72973c51bf9981ba6da423',1,'com.github.hegdahl.inf101v2022.Game.makeView()']]],
+  ['maxplayers_5',['maxPlayers',['../classTicTacToe.html#a6b837e9d29981d0859cfee04ac2cad97',1,'TicTacToe.maxPlayers()'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game.html#aeaf559a78c629b3c26bc611187a030aa',1,'com.github.hegdahl.inf101v2022.Game.maxPlayers()']]],
+  ['minplayers_6',['minPlayers',['../classTicTacToe.html#ac16dacb2cf08cf3fbbd7c2beb750f3f6',1,'TicTacToe.minPlayers()'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game.html#a9fe92308a20c28f383c5d2268d3c1e2d',1,'com.github.hegdahl.inf101v2022.Game.minPlayers()']]],
+  ['model_7',['Model',['../interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model.html',1,'com::github::hegdahl::inf101v2022::Game']]]
+];

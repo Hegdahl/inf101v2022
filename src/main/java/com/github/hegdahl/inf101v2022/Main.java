@@ -1,16 +1,31 @@
 package com.github.hegdahl.inf101v2022;
 
-import java.io.IOException;
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.Namespace;
 import net.sourceforge.argparse4j.inf.Subparser;
 import net.sourceforge.argparse4j.inf.Subparsers;
 
+/**
+ * Entry point for the program.
+ * 
+ * <p>Dispatches to `Host` or `Join`
+ * depending on the subcommand used.
+ */
 public class Main {
 
+  /**
+   * Implemented by `Host` and `Join`
+   * to take control of the program.
+   */
   public interface SubcommandHandler {
-    public void main(Namespace ns) throws IOException;
+    /**
+     * Perform the subcommand given
+     * the processed command line arguments.
+     * 
+     * @param ns object contianing processed arguments.
+     */
+    public void main(Namespace ns);
   }
 
   /**
@@ -64,14 +79,7 @@ public class Main {
 
     Namespace ns = rootParser.parseArgsOrFail(args);
 
-    try {
-      ((SubcommandHandler)ns.get("handler")).main(ns);
-    } catch (IOException e) {
-      e.printStackTrace();
-      System.err.println(e);
-      System.err.println(e.getCause());
-      System.exit(1);
-    }
+    ((SubcommandHandler) ns.get("handler")).main(ns);
   }
 
 }

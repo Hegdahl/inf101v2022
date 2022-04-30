@@ -1,0 +1,85 @@
+\hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller}{}\doxysection{com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+Controller Class Reference}
+\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller}\index{com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a1420b3cf6fdca59e12c364986453b17a}{Controller}} (int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a98178688eef59d139341e397682529bc}{user\+Index}})
+\item 
+boolean \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_af3418468e161ad83e0ba7a58a1cc4485}{trigger\+Key}} (Key\+Stroke key\+Stroke)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a5c972c457566b0207336fd0ce07df5c0}{register\+Keybind}} (Key\+Stroke key\+Stroke, Supplier$<$ Boolean $>$ action)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a98178688eef59d139341e397682529bc}{user\+Index}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for classes whose job is to map key input from a specific user to state modifyin methods on a model. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a1420b3cf6fdca59e12c364986453b17a}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a1420b3cf6fdca59e12c364986453b17a}} 
+\index{com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}}
+\doxysubsubsection{\texorpdfstring{Controller()}{Controller()}}
+{\footnotesize\ttfamily com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+Controller.\+Controller (\begin{DoxyParamCaption}\item[{int}]{user\+Index }\end{DoxyParamCaption})}
+
+Constructs the controller for the given user.
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Index} & number in \mbox{[}0, number\+Of\+Players) representing which user is responsible for keystrokes sent to this controller. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a5c972c457566b0207336fd0ce07df5c0}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a5c972c457566b0207336fd0ce07df5c0}} 
+\index{com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}!registerKeybind@{registerKeybind}}
+\index{registerKeybind@{registerKeybind}!com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}}
+\doxysubsubsection{\texorpdfstring{registerKeybind()}{registerKeybind()}}
+{\footnotesize\ttfamily void com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+Controller.\+register\+Keybind (\begin{DoxyParamCaption}\item[{Key\+Stroke}]{key\+Stroke,  }\item[{Supplier$<$ Boolean $>$}]{action }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Binds an action to a key.
+
+The action should return true if it succeeded, and false otherwise to allow more actions to be bound to the same key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+Stroke} & the key that triggers will trigger this action \\
+\hline
+{\em action} & function object containing the method \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_af3418468e161ad83e0ba7a58a1cc4485}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_af3418468e161ad83e0ba7a58a1cc4485}} 
+\index{com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}!triggerKey@{triggerKey}}
+\index{triggerKey@{triggerKey}!com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}}
+\doxysubsubsection{\texorpdfstring{triggerKey()}{triggerKey()}}
+{\footnotesize\ttfamily boolean com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+Controller.\+trigger\+Key (\begin{DoxyParamCaption}\item[{Key\+Stroke}]{key\+Stroke }\end{DoxyParamCaption})}
+
+Tell the controller a key was hit attempt doing actions bound to that key until one returns true indicating success.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+Stroke} & the key that was hit \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a98178688eef59d139341e397682529bc}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller_a98178688eef59d139341e397682529bc}} 
+\index{com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}!userIndex@{userIndex}}
+\index{userIndex@{userIndex}!com.github.hegdahl.inf101v2022.Game.Controller@{com.github.hegdahl.inf101v2022.Game.Controller}}
+\doxysubsubsection{\texorpdfstring{userIndex}{userIndex}}
+{\footnotesize\ttfamily final int com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+Controller.\+user\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+Number in \mbox{[}0, number\+Of\+Players) representing which user is responsible for keystrokes sent to this controller. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/github/hegdahl/inf101v2022/Game.\+java\end{DoxyCompactItemize}

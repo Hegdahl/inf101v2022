@@ -1,0 +1,212 @@
+\hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game}{}\doxysection{com.\+github.\+hegdahl.\+inf101v2022.\+Game Class Reference}
+\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game}\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+Inheritance diagram for com.\+github.\+hegdahl.\+inf101v2022.\+Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller}{Controller}}
+\item 
+interface \mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}}
+\item 
+class \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View}{View}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9fe92308a20c28f383c5d2268d3c1e2d}{min\+Players}} ()
+\item 
+abstract int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aeaf559a78c629b3c26bc611187a030aa}{max\+Players}} ()
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a44a6b2fab02fa7ae52fb41dd44032156}{Game}} ()
+\item 
+final synchronized void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_ac4c8ea35a44e1de535af3a89d342e035}{trigger\+Key}} (int id, Key\+Stroke key\+Stroke)
+\item 
+final long \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aba4c0c391231665ab27dd951565b9749}{paint}} (int id, \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer}{Screen\+Buffer}} canvas, long last\+Seen\+Version)  throws Interrupted\+Exception 
+\item 
+final synchronized boolean \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a1e475638318ffd3ec783bf38d0a65069}{register\+User}} (int id, String username)
+\item 
+final synchronized void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a56def42fec85a1993ecec1ec942b6f09}{unregister\+User}} (int id)
+\item 
+final synchronized String \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9af7df2cdd58b3fb4f39b146ac67346e}{get\+Username}} (int id)
+\item 
+synchronized boolean \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a26f2bd9f1ddcb19fd57f0e77418d0fbb}{finished}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract \mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}} \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a895c1d118e2bfa3ba76373641085a55e}{make\+Model}} (int number\+Of\+Players)
+\item 
+abstract \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View}{View}} \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a1887f98a8d72973c51bf9981ba6da423}{make\+View}} (\mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}} model, int player\+Index)
+\item 
+abstract \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller}{Controller}} \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a5a12d989e41000eada28bd28ee341c9c}{make\+Controller}} (\mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}} model, int player\+Index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Master object for holding a model, view, and controller specified a descendant class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a44a6b2fab02fa7ae52fb41dd44032156}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a44a6b2fab02fa7ae52fb41dd44032156}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!Game@{Game}}
+\index{Game@{Game}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs the game in a lobby-\/like state where new connections are allowed until the game starts. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a26f2bd9f1ddcb19fd57f0e77418d0fbb}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a26f2bd9f1ddcb19fd57f0e77418d0fbb}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!finished@{finished}}
+\index{finished@{finished}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{finished()}{finished()}}
+{\footnotesize\ttfamily synchronized boolean com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Finds the username for a connected user given the user\textquotesingle{}s unique id. \mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9af7df2cdd58b3fb4f39b146ac67346e}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9af7df2cdd58b3fb4f39b146ac67346e}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!getUsername@{getUsername}}
+\index{getUsername@{getUsername}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{getUsername()}{getUsername()}}
+{\footnotesize\ttfamily final synchronized String com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+get\+Username (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Finds the username for a connected user given the user\textquotesingle{}s unique id. \mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a5a12d989e41000eada28bd28ee341c9c}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a5a12d989e41000eada28bd28ee341c9c}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!makeController@{makeController}}
+\index{makeController@{makeController}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{makeController()}{makeController()}}
+{\footnotesize\ttfamily abstract \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller}{Controller}} com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+make\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}}}]{model,  }\item[{int}]{player\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}, {\ttfamily [protected]}}
+
+Wrapper for the constructor of the {\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Controller}{Controller}}} implementation of the game.
+
+It is used to allow type safe dynamic loading of game rules.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & reference to the model this view should do request actions on \\
+\hline
+{\em player\+Index} & number in \mbox{[}0, number\+Of\+Players) representing the player that the created controller should act as \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a895c1d118e2bfa3ba76373641085a55e}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a895c1d118e2bfa3ba76373641085a55e}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!makeModel@{makeModel}}
+\index{makeModel@{makeModel}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{makeModel()}{makeModel()}}
+{\footnotesize\ttfamily abstract \mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}} com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+make\+Model (\begin{DoxyParamCaption}\item[{int}]{number\+Of\+Players }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}, {\ttfamily [protected]}}
+
+Wrapper for the constructor of the {\ttfamily \mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}}} implementation of the game.
+
+It is used to allow type safe dynamic loading of game rules. 
+
+Reimplemented in \mbox{\hyperlink{classTicTacToe_a1332dfeec09320eb6dfd7a6fcf2469d6}{Tic\+Tac\+Toe}}.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a1887f98a8d72973c51bf9981ba6da423}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a1887f98a8d72973c51bf9981ba6da423}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!makeView@{makeView}}
+\index{makeView@{makeView}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{makeView()}{makeView()}}
+{\footnotesize\ttfamily abstract \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View}{View}} com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+make\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacecom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1Model}{Model}}}]{model,  }\item[{int}]{player\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}, {\ttfamily [protected]}}
+
+Wrapper for the constructor of the {\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View}{View}}} implementation of the game.
+
+It is used to allow type safe dynamic loading of game rules.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & reference to the model this view should create frames for. \\
+\hline
+{\em player\+Index} & number in \mbox{[}0, number\+Of\+Players) representing the player that the created view should make frames for \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aeaf559a78c629b3c26bc611187a030aa}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aeaf559a78c629b3c26bc611187a030aa}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!maxPlayers@{maxPlayers}}
+\index{maxPlayers@{maxPlayers}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{maxPlayers()}{maxPlayers()}}
+{\footnotesize\ttfamily abstract int com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+max\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Sets a maximum for how many players there can be in a single game. 
+
+Reimplemented in \mbox{\hyperlink{classTicTacToe_a6b837e9d29981d0859cfee04ac2cad97}{Tic\+Tac\+Toe}}.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9fe92308a20c28f383c5d2268d3c1e2d}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9fe92308a20c28f383c5d2268d3c1e2d}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!minPlayers@{minPlayers}}
+\index{minPlayers@{minPlayers}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{minPlayers()}{minPlayers()}}
+{\footnotesize\ttfamily abstract int com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+min\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Sets a minimum for how many players there can be in a single game. 
+
+Reimplemented in \mbox{\hyperlink{classTicTacToe_ac16dacb2cf08cf3fbbd7c2beb750f3f6}{Tic\+Tac\+Toe}}.
+
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aba4c0c391231665ab27dd951565b9749}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aba4c0c391231665ab27dd951565b9749}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!paint@{paint}}
+\index{paint@{paint}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily final long com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+paint (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer}{Screen\+Buffer}}}]{canvas,  }\item[{long}]{last\+Seen\+Version }\end{DoxyParamCaption}) throws Interrupted\+Exception}
+
+Request for a new frame to be stored in canvas.
+
+Blocks until there is new game state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & unique id for the user requesting the frame \\
+\hline
+{\em canvas} & where to store the frame. \\
+\hline
+{\em last\+Seen\+Version} & number representing the game state at the last frame given to this user \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a1e475638318ffd3ec783bf38d0a65069}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a1e475638318ffd3ec783bf38d0a65069}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!registerUser@{registerUser}}
+\index{registerUser@{registerUser}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{registerUser()}{registerUser()}}
+{\footnotesize\ttfamily final synchronized boolean com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+register\+User (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{String}]{username }\end{DoxyParamCaption})}
+
+Inform the game that a new user connected.
+
+Does nothing if the game has already started.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & unique id representing the user \\
+\hline
+{\em username} & name picked by the user, not neccesarily unique.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the registration succeeded. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_ac4c8ea35a44e1de535af3a89d342e035}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_ac4c8ea35a44e1de535af3a89d342e035}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!triggerKey@{triggerKey}}
+\index{triggerKey@{triggerKey}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{triggerKey()}{triggerKey()}}
+{\footnotesize\ttfamily final synchronized void com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+trigger\+Key (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{Key\+Stroke}]{key\+Stroke }\end{DoxyParamCaption})}
+
+Report that a key was pressed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & unique id for the user that pressed the key \\
+\hline
+{\em key\+Stroke} & the key that was pressed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a56def42fec85a1993ecec1ec942b6f09}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a56def42fec85a1993ecec1ec942b6f09}} 
+\index{com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}!unregisterUser@{unregisterUser}}
+\index{unregisterUser@{unregisterUser}!com.github.hegdahl.inf101v2022.Game@{com.github.hegdahl.inf101v2022.Game}}
+\doxysubsubsection{\texorpdfstring{unregisterUser()}{unregisterUser()}}
+{\footnotesize\ttfamily final synchronized void com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+unregister\+User (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+Inform the game that a user disconnected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & unique id representing the user \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/github/hegdahl/inf101v2022/Game.\+java\end{DoxyCompactItemize}

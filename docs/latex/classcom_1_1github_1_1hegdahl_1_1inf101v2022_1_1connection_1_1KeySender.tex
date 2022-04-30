@@ -1,0 +1,52 @@
+\hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender}{}\doxysection{com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Sender Class Reference}
+\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender}\index{com.github.hegdahl.inf101v2022.connection.KeySender@{com.github.hegdahl.inf101v2022.connection.KeySender}}
+Inheritance diagram for com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Sender\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender_ac1918179fe6b033d2cc88a83bcfdc64a}{Key\+Sender}} (Screen screen, Buffered\+Writer writer)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender_a3b4c6bc13aa92a7464f867117bed180c}{run}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Forward key events to the host\textquotesingle{}s {\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever}{Key\+Reciever}}} over the network. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender_ac1918179fe6b033d2cc88a83bcfdc64a}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender_ac1918179fe6b033d2cc88a83bcfdc64a}} 
+\index{com.github.hegdahl.inf101v2022.connection.KeySender@{com.github.hegdahl.inf101v2022.connection.KeySender}!KeySender@{KeySender}}
+\index{KeySender@{KeySender}!com.github.hegdahl.inf101v2022.connection.KeySender@{com.github.hegdahl.inf101v2022.connection.KeySender}}
+\doxysubsubsection{\texorpdfstring{KeySender()}{KeySender()}}
+{\footnotesize\ttfamily com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Sender.\+Key\+Sender (\begin{DoxyParamCaption}\item[{Screen}]{screen,  }\item[{Buffered\+Writer}]{writer }\end{DoxyParamCaption})}
+
+Constructs the \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever}{Key\+Reciever}} without starting the forwarding.
+
+The forwarding is done in the current thread using .\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender_a3b4c6bc13aa92a7464f867117bed180c}{run()}}, or in a new thread usign .start().
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen} & lanterna Screen object to listen to key events from. \\
+\hline
+{\em writer} & stream object to write the key strokes to. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender_a3b4c6bc13aa92a7464f867117bed180c}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender_a3b4c6bc13aa92a7464f867117bed180c}} 
+\index{com.github.hegdahl.inf101v2022.connection.KeySender@{com.github.hegdahl.inf101v2022.connection.KeySender}!run@{run}}
+\index{run@{run}!com.github.hegdahl.inf101v2022.connection.KeySender@{com.github.hegdahl.inf101v2022.connection.KeySender}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Sender.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Send keystrokes to the server until interrupted. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/github/hegdahl/inf101v2022/connection/Key\+Sender.\+java\end{DoxyCompactItemize}

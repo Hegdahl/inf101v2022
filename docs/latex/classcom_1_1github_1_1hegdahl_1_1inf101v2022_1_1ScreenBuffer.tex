@@ -1,0 +1,122 @@
+\hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer}{}\doxysection{com.\+github.\+hegdahl.\+inf101v2022.\+Screen\+Buffer Class Reference}
+\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer}\index{com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Cell}
+\item 
+class {\bfseries Color}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a566c9025e2bc0d43b810a10e420ef03e}{clear\+And\+Resize}} (int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a84abcbfc3330903957714bf47a1f711f}{height}}, int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a56fd3280deba8e98b8942d3e136919b8}{width}})
+\item 
+int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a84abcbfc3330903957714bf47a1f711f}{height}} ()
+\item 
+int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a56fd3280deba8e98b8942d3e136919b8}{width}} ()
+\item 
+Cell \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a4da97866058c0413e45a6525a4c8aab7}{get}} (int row, int column)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_aa69e21ac5c41852802288a67b2f06990}{set}} (int row, int column, Cell cell)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_afc0e5e6f20079dd27695c2d652662c3d}{write}} (int row, int column, String text, Color foreground, Color background)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores colored characters for displaying in a terminal. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a566c9025e2bc0d43b810a10e420ef03e}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a566c9025e2bc0d43b810a10e420ef03e}} 
+\index{com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}!clearAndResize@{clearAndResize}}
+\index{clearAndResize@{clearAndResize}!com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}}
+\doxysubsubsection{\texorpdfstring{clearAndResize()}{clearAndResize()}}
+{\footnotesize\ttfamily void com.\+github.\+hegdahl.\+inf101v2022.\+Screen\+Buffer.\+clear\+And\+Resize (\begin{DoxyParamCaption}\item[{int}]{height,  }\item[{int}]{width }\end{DoxyParamCaption})}
+
+Change the dimensions of the \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer}{Screen\+Buffer}} and reset every cell.
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & how many rows to make \\
+\hline
+{\em width} & how many columns to make \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a4da97866058c0413e45a6525a4c8aab7}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a4da97866058c0413e45a6525a4c8aab7}} 
+\index{com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}!get@{get}}
+\index{get@{get}!com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily Cell com.\+github.\+hegdahl.\+inf101v2022.\+Screen\+Buffer.\+get (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column }\end{DoxyParamCaption})}
+
+Get a cell from the buffer.
+
+Uses 0-\/based indexing in the coordinate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & which row to find the cell in \\
+\hline
+{\em column} & which column to find the cell in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the cell in the {\ttfamily row}-\/th row and {\ttfamily colmn}-\/th column. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a84abcbfc3330903957714bf47a1f711f}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a84abcbfc3330903957714bf47a1f711f}} 
+\index{com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}!height@{height}}
+\index{height@{height}!com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}}
+\doxysubsubsection{\texorpdfstring{height()}{height()}}
+{\footnotesize\ttfamily int com.\+github.\+hegdahl.\+inf101v2022.\+Screen\+Buffer.\+height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get how many rows are in the buffer. \mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_aa69e21ac5c41852802288a67b2f06990}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_aa69e21ac5c41852802288a67b2f06990}} 
+\index{com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}!set@{set}}
+\index{set@{set}!com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void com.\+github.\+hegdahl.\+inf101v2022.\+Screen\+Buffer.\+set (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column,  }\item[{Cell}]{cell }\end{DoxyParamCaption})}
+
+Set a cell in the buffer.
+
+Uses 0-\/based indexing in the coordinate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & which row to set the cell in \\
+\hline
+{\em column} & which column to set the cell in \\
+\hline
+{\em cell} & the new cell value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a56fd3280deba8e98b8942d3e136919b8}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_a56fd3280deba8e98b8942d3e136919b8}} 
+\index{com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}!width@{width}}
+\index{width@{width}!com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}}
+\doxysubsubsection{\texorpdfstring{width()}{width()}}
+{\footnotesize\ttfamily int com.\+github.\+hegdahl.\+inf101v2022.\+Screen\+Buffer.\+width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get how many columns are in the buffer. \mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_afc0e5e6f20079dd27695c2d652662c3d}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer_afc0e5e6f20079dd27695c2d652662c3d}} 
+\index{com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}!write@{write}}
+\index{write@{write}!com.github.hegdahl.inf101v2022.ScreenBuffer@{com.github.hegdahl.inf101v2022.ScreenBuffer}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void com.\+github.\+hegdahl.\+inf101v2022.\+Screen\+Buffer.\+write (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{column,  }\item[{String}]{text,  }\item[{Color}]{foreground,  }\item[{Color}]{background }\end{DoxyParamCaption})}
+
+Write horizontally.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & vertical position of text \\
+\hline
+{\em column} & horizontal position of start of text \\
+\hline
+{\em text} & what to write \\
+\hline
+{\em foreground} & color of the characters \\
+\hline
+{\em background} & color of the backgroudn \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/github/hegdahl/inf101v2022/Screen\+Buffer.\+java\end{DoxyCompactItemize}

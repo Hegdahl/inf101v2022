@@ -1,0 +1,92 @@
+This program allows you to host or join a board game with rules according to a class that extends {\ttfamily Game}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./inf101v2022 -\/-\/help}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{usage: inf101v2022 [-\/h] COMMAND ...}
+\DoxyCodeLine{}
+\DoxyCodeLine{Framework for board-\/like games in the terminal.}
+\DoxyCodeLine{}
+\DoxyCodeLine{named arguments:}
+\DoxyCodeLine{  -\/h, -\/-\/help             show this help message and exit}
+\DoxyCodeLine{}
+\DoxyCodeLine{subcommands:}
+\DoxyCodeLine{  valid subcommands}
+\DoxyCodeLine{}
+\DoxyCodeLine{  COMMAND                additional help}
+\DoxyCodeLine{    host                 Host a game server.}
+\DoxyCodeLine{    join                 Join a game hosted on some server.}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./inf101v2022 host -\/-\/help}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{usage: inf101v2022 host [-\/h] [-\/p PORT] rulesPath}
+\DoxyCodeLine{}
+\DoxyCodeLine{positional arguments:}
+\DoxyCodeLine{  rulesPath              .class file contianing the ruleset for the game.}
+\DoxyCodeLine{}
+\DoxyCodeLine{named arguments:}
+\DoxyCodeLine{  -\/h, -\/-\/help             show this help message and exit}
+\DoxyCodeLine{  -\/p PORT, -\/-\/port PORT   Which port to bind the server to.}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./inf101v2022 join -\/-\/help}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{usage: inf101v2022 join [-\/h] [-\/p PORT] username address}
+\DoxyCodeLine{}
+\DoxyCodeLine{positional arguments:}
+\DoxyCodeLine{  username               The name the other players see you as.}
+\DoxyCodeLine{  address                Which IP address to connect to}
+\DoxyCodeLine{}
+\DoxyCodeLine{named arguments:}
+\DoxyCodeLine{  -\/h, -\/-\/help             show this help message and exit}
+\DoxyCodeLine{  -\/p PORT, -\/-\/port PORT   Which port to connect to.}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md1}{}\doxysection{Example Usage}\label{md_README_autotoc_md1}
+\href{https://user-images.githubusercontent.com/48063801/166123263-654e20c4-46f6-46b9-9857-e18ebd5340dd.mp4}{\texttt{ https\+://user-\/images.\+githubusercontent.\+com/48063801/166123263-\/654e20c4-\/46f6-\/46b9-\/9857-\/e18ebd5340dd.\+mp4}}\hypertarget{md_README_autotoc_md2}{}\doxysection{Building}\label{md_README_autotoc_md2}
+\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Linux (and probably but not tested Mac\+OS)}\label{md_README_autotoc_md3}
+With maven installed, it should work to run {\ttfamily ./build.sh}.
+
+This will build the project itself in addition to every game in the folder {\ttfamily /src/games}.
+
+The main executable will be called {\ttfamily inf101v2022.\+out}.\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Windows}\label{md_README_autotoc_md4}
+With maven installed, run {\ttfamily mvn package}.
+
+This will build an executable .jar file which is the host and join program, and also functions as the library when building a game.
+
+The path for the jar file will be {\ttfamily target\textbackslash{}inf101v2022-\/\{version\}-\/\+SNAPSHOT-\/jar-\/with-\/dependencies.\+jar}. I suggest making a copy with a shorter name in the base of the directory.
+
+To build a game, run 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{javac path\(\backslash\)to\(\backslash\)the\(\backslash\)game.java -\/d where\(\backslash\)to\(\backslash\)put\(\backslash\)the\(\backslash\)game -\/cp the\_jar\_file.jar}
+
+\end{DoxyCode}
+
+
+The jar can not be ran directly in the terminal, but is instead ran like this 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{java -\/jar the\_jar\_file.jar args}
+
+\end{DoxyCode}
+
+
+where args are arguemnts as described in the {\ttfamily -\/-\/help} outputs at the start of this document. 

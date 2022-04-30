@@ -1,0 +1,56 @@
+\hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever}{}\doxysection{com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Reciever Class Reference}
+\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever}\index{com.github.hegdahl.inf101v2022.connection.KeyReciever@{com.github.hegdahl.inf101v2022.connection.KeyReciever}}
+Inheritance diagram for com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Reciever\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever_a2fefb3684d96bb644a252c6c609fa68b}{Key\+Reciever}} (int id, \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game}{Game}} game, Scanner reader, Count\+Down\+Latch on\+Exit)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever_a4093dab487aa9dd51f246418a2060825}{run}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Listenes to key events sent by {\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeySender}{Key\+Sender}}} from a connected player on the network and forwards them to the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever_a2fefb3684d96bb644a252c6c609fa68b}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever_a2fefb3684d96bb644a252c6c609fa68b}} 
+\index{com.github.hegdahl.inf101v2022.connection.KeyReciever@{com.github.hegdahl.inf101v2022.connection.KeyReciever}!KeyReciever@{KeyReciever}}
+\index{KeyReciever@{KeyReciever}!com.github.hegdahl.inf101v2022.connection.KeyReciever@{com.github.hegdahl.inf101v2022.connection.KeyReciever}}
+\doxysubsubsection{\texorpdfstring{KeyReciever()}{KeyReciever()}}
+{\footnotesize\ttfamily com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Reciever.\+Key\+Reciever (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game}{Game}}}]{game,  }\item[{Scanner}]{reader,  }\item[{Count\+Down\+Latch}]{on\+Exit }\end{DoxyParamCaption})}
+
+Constructs the \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever}{Key\+Reciever}} without starting the forwarding.
+
+The forwarding is done in the current thread using .\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever_a4093dab487aa9dd51f246418a2060825}{run()}}, or in a new thread usign .start().
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & unique id for the connection keys are lstened to from \\
+\hline
+{\em game} & which game to report key events to \\
+\hline
+{\em reader} & stream object to read key events from \\
+\hline
+{\em on\+Exit} & Latch used as a callback to tell invoker that the the loop finished \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever_a4093dab487aa9dd51f246418a2060825}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1KeyReciever_a4093dab487aa9dd51f246418a2060825}} 
+\index{com.github.hegdahl.inf101v2022.connection.KeyReciever@{com.github.hegdahl.inf101v2022.connection.KeyReciever}!run@{run}}
+\index{run@{run}!com.github.hegdahl.inf101v2022.connection.KeyReciever@{com.github.hegdahl.inf101v2022.connection.KeyReciever}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Key\+Reciever.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Listen for keys until interrupted. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/github/hegdahl/inf101v2022/connection/Key\+Reciever.\+java\end{DoxyCompactItemize}

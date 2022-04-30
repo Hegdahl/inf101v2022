@@ -1,0 +1,52 @@
+\hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever}{}\doxysection{com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Screen\+Reciever Class Reference}
+\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever}\index{com.github.hegdahl.inf101v2022.connection.ScreenReciever@{com.github.hegdahl.inf101v2022.connection.ScreenReciever}}
+Inheritance diagram for com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Screen\+Reciever\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever_ab6e50782ebf05ffab82716f40196a8b6}{Screen\+Reciever}} (Screen screen, Scanner reader)
+\item 
+void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever_a147bbc21b4a9ddefce4897c9c47ed6ff}{run}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Listenes for frames sent by {\ttfamily \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenSender}{Screen\+Sender}}} from the server and shows them in the terminal. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever_ab6e50782ebf05ffab82716f40196a8b6}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever_ab6e50782ebf05ffab82716f40196a8b6}} 
+\index{com.github.hegdahl.inf101v2022.connection.ScreenReciever@{com.github.hegdahl.inf101v2022.connection.ScreenReciever}!ScreenReciever@{ScreenReciever}}
+\index{ScreenReciever@{ScreenReciever}!com.github.hegdahl.inf101v2022.connection.ScreenReciever@{com.github.hegdahl.inf101v2022.connection.ScreenReciever}}
+\doxysubsubsection{\texorpdfstring{ScreenReciever()}{ScreenReciever()}}
+{\footnotesize\ttfamily com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Screen\+Reciever.\+Screen\+Reciever (\begin{DoxyParamCaption}\item[{Screen}]{screen,  }\item[{Scanner}]{reader }\end{DoxyParamCaption})}
+
+Constructs the \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenSender}{Screen\+Sender}} without starting the forwarding.
+
+The forwarding is done in the current thread using .\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever_a147bbc21b4a9ddefce4897c9c47ed6ff}{run()}}, or in a new thread usign .start().
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen} & lanterna Screen object to write frames to \\
+\hline
+{\em reader} & stream object to read frames from \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever_a147bbc21b4a9ddefce4897c9c47ed6ff}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1connection_1_1ScreenReciever_a147bbc21b4a9ddefce4897c9c47ed6ff}} 
+\index{com.github.hegdahl.inf101v2022.connection.ScreenReciever@{com.github.hegdahl.inf101v2022.connection.ScreenReciever}!run@{run}}
+\index{run@{run}!com.github.hegdahl.inf101v2022.connection.ScreenReciever@{com.github.hegdahl.inf101v2022.connection.ScreenReciever}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void com.\+github.\+hegdahl.\+inf101v2022.\+connection.\+Screen\+Reciever.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Listen for frames until interrupted. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/github/hegdahl/inf101v2022/connection/Screen\+Reciever.\+java\end{DoxyCompactItemize}

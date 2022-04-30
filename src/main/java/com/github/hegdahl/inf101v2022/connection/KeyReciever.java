@@ -8,6 +8,11 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * Listenes to key events sent by `KeySender`
+ * from a connected player on the network
+ * and forwards them to the game.
+ */
 public class KeyReciever extends Thread {
 
   int id;
@@ -16,7 +21,11 @@ public class KeyReciever extends Thread {
   CountDownLatch onExit;
 
   /**
-   * Listenes to key events from a connected player.
+   * Constructs the KeyReciever without starting
+   * the forwarding.
+   * 
+   * <p>The forwarding is done in the current thread using
+   * .run(), or in a new thread usign .start().
    * 
    * @param id     unique id for the connection
    *               keys are lstened to from
@@ -32,6 +41,9 @@ public class KeyReciever extends Thread {
     this.onExit = onExit;
   }
 
+  /**
+   * Listen for keys until interrupted.
+   */
   @Override
   public void run() {
     try {

@@ -1,0 +1,108 @@
+\hypertarget{classTicTacToe}{}\doxysection{Tic\+Tac\+Toe Class Reference}
+\label{classTicTacToe}\index{TicTacToe@{TicTacToe}}
+Inheritance diagram for Tic\+Tac\+Toe\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTicTacToe}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Controller}
+\item 
+class {\bfseries Model}
+\item 
+class {\bfseries View}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classTicTacToe_ac16dacb2cf08cf3fbbd7c2beb750f3f6}{min\+Players}} ()
+\item 
+int \mbox{\hyperlink{classTicTacToe_a6b837e9d29981d0859cfee04ac2cad97}{max\+Players}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Game.\+Model \mbox{\hyperlink{classTicTacToe_a1332dfeec09320eb6dfd7a6fcf2469d6}{make\+Model}} (int number\+Of\+Players)
+\item 
+Game.\+View \mbox{\hyperlink{classTicTacToe_a035cf624e1afa70bd266deac7d8f4e29}{make\+View}} (Game.\+Model model, int user\+Index)
+\item 
+Game.\+Controller \mbox{\hyperlink{classTicTacToe_a020eefc74849b27c33a518aa9bd5af0b}{make\+Controller}} (Game.\+Model model, int user\+Index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tic Tac Toe, also known as three in a row.
+
+A game for two players about filling complete row or column or diagonal with their own tokens. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTicTacToe_a020eefc74849b27c33a518aa9bd5af0b}\label{classTicTacToe_a020eefc74849b27c33a518aa9bd5af0b}} 
+\index{TicTacToe@{TicTacToe}!makeController@{makeController}}
+\index{makeController@{makeController}!TicTacToe@{TicTacToe}}
+\doxysubsubsection{\texorpdfstring{makeController()}{makeController()}}
+{\footnotesize\ttfamily Game.\+Controller Tic\+Tac\+Toe.\+make\+Controller (\begin{DoxyParamCaption}\item[{Game.\+Model}]{model,  }\item[{int}]{user\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Wrapper for the Controller constructor. The cast is safe because the given model is guaranteed to be made from {\ttfamily make\+Model}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Model created by {\ttfamily make\+Model}. \\
+\hline
+{\em user\+Index} & Which user will use the created controller. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTicTacToe_a1332dfeec09320eb6dfd7a6fcf2469d6}\label{classTicTacToe_a1332dfeec09320eb6dfd7a6fcf2469d6}} 
+\index{TicTacToe@{TicTacToe}!makeModel@{makeModel}}
+\index{makeModel@{makeModel}!TicTacToe@{TicTacToe}}
+\doxysubsubsection{\texorpdfstring{makeModel()}{makeModel()}}
+{\footnotesize\ttfamily Game.\+Model Tic\+Tac\+Toe.\+make\+Model (\begin{DoxyParamCaption}\item[{int}]{number\+Of\+Players }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Wrapper for the constructor of the {\ttfamily Model} implementation of the game.
+
+It is used to allow type safe dynamic loading of game rules. 
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a895c1d118e2bfa3ba76373641085a55e}{com.\+github.\+hegdahl.\+inf101v2022.\+Game}}.
+
+\mbox{\Hypertarget{classTicTacToe_a035cf624e1afa70bd266deac7d8f4e29}\label{classTicTacToe_a035cf624e1afa70bd266deac7d8f4e29}} 
+\index{TicTacToe@{TicTacToe}!makeView@{makeView}}
+\index{makeView@{makeView}!TicTacToe@{TicTacToe}}
+\doxysubsubsection{\texorpdfstring{makeView()}{makeView()}}
+{\footnotesize\ttfamily Game.\+View Tic\+Tac\+Toe.\+make\+View (\begin{DoxyParamCaption}\item[{Game.\+Model}]{model,  }\item[{int}]{user\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Wrapper for the View constructor. The cast is safe because the given model is guaranteed to be made from {\ttfamily make\+Model}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Model created by {\ttfamily make\+Model}. \\
+\hline
+{\em user\+Index} & Which user will use the created view. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTicTacToe_a6b837e9d29981d0859cfee04ac2cad97}\label{classTicTacToe_a6b837e9d29981d0859cfee04ac2cad97}} 
+\index{TicTacToe@{TicTacToe}!maxPlayers@{maxPlayers}}
+\index{maxPlayers@{maxPlayers}!TicTacToe@{TicTacToe}}
+\doxysubsubsection{\texorpdfstring{maxPlayers()}{maxPlayers()}}
+{\footnotesize\ttfamily int Tic\+Tac\+Toe.\+max\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets a maximum for how many players there can be in a single game. 
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aeaf559a78c629b3c26bc611187a030aa}{com.\+github.\+hegdahl.\+inf101v2022.\+Game}}.
+
+\mbox{\Hypertarget{classTicTacToe_ac16dacb2cf08cf3fbbd7c2beb750f3f6}\label{classTicTacToe_ac16dacb2cf08cf3fbbd7c2beb750f3f6}} 
+\index{TicTacToe@{TicTacToe}!minPlayers@{minPlayers}}
+\index{minPlayers@{minPlayers}!TicTacToe@{TicTacToe}}
+\doxysubsubsection{\texorpdfstring{minPlayers()}{minPlayers()}}
+{\footnotesize\ttfamily int Tic\+Tac\+Toe.\+min\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets a minimum for how many players there can be in a single game. 
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9fe92308a20c28f383c5d2268d3c1e2d}{com.\+github.\+hegdahl.\+inf101v2022.\+Game}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/games/Tic\+Tac\+Toe.\+java\end{DoxyCompactItemize}

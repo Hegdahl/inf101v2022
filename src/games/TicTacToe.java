@@ -5,6 +5,14 @@ import com.googlecode.lanterna.input.KeyType;
 
 import java.util.function.Supplier;
 
+/**
+ * Tic Tac Toe,
+ * also known as three in a row.
+ * 
+ * <p>A game for two players about
+ * filling complete row or column
+ * or diagonal with their own tokens.
+ */
 public class TicTacToe extends Game {
 
   @Override
@@ -235,11 +243,27 @@ public class TicTacToe extends Game {
     return new Model(numberOfPlayers);
   }
 
+  /**
+   * Wrapper for the View constructor.
+   * The cast is safe because the given
+   * model is guaranteed to be made from `makeModel`.
+   * 
+   * @param model     Model created by `makeModel`.
+   * @param userIndex Which user will use the created view.
+   */
   @Override
   protected Game.View makeView(Game.Model model, int userIndex) {
     return new View(Model.class.cast(model), userIndex);
   }
 
+  /**
+   * Wrapper for the Controller constructor.
+   * The cast is safe because the given
+   * model is guaranteed to be made from `makeModel`.
+   * 
+   * @param model     Model created by `makeModel`.
+   * @param userIndex Which user will use the created controller.
+   */
   @Override
   protected Game.Controller makeController(Game.Model model, int userIndex) {
     return new Controller(Model.class.cast(model), userIndex);

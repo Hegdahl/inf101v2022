@@ -16,6 +16,11 @@ import java.util.Scanner;
 
 import net.sourceforge.argparse4j.inf.Namespace;
 
+/**
+ * Used when the program is started with the `join` subcommand.
+ * 
+ * <p>Connects to a server started with the `host` subcommand.
+ */
 public class Join implements Main.SubcommandHandler {
 
   @Override

@@ -1,0 +1,63 @@
+\hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View}{}\doxysection{com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+View Class Reference}
+\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View}\index{com.github.hegdahl.inf101v2022.Game.View@{com.github.hegdahl.inf101v2022.Game.View}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_ae999b8dfcc0b810722359e9256f94c2e}{View}} (int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_ac3ddfad10417c3e93f01c4d527fe95a9}{user\+Index}})
+\item 
+abstract void \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_a7474f65d560fd966dccaab33f4dca1ef}{paint}} (\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer}{Screen\+Buffer}} canvas)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final int \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_ac3ddfad10417c3e93f01c4d527fe95a9}{user\+Index}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for classes whose job is to create a visual representation of a model for a specific player. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_ae999b8dfcc0b810722359e9256f94c2e}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_ae999b8dfcc0b810722359e9256f94c2e}} 
+\index{com.github.hegdahl.inf101v2022.Game.View@{com.github.hegdahl.inf101v2022.Game.View}!View@{View}}
+\index{View@{View}!com.github.hegdahl.inf101v2022.Game.View@{com.github.hegdahl.inf101v2022.Game.View}}
+\doxysubsubsection{\texorpdfstring{View()}{View()}}
+{\footnotesize\ttfamily com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+View.\+View (\begin{DoxyParamCaption}\item[{int}]{user\+Index }\end{DoxyParamCaption})}
+
+Creates a \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View}{View}} for the given user.
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Index} & number in \mbox{[}0, number\+Of\+Players) representing which user uses this view to request frames \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_a7474f65d560fd966dccaab33f4dca1ef}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_a7474f65d560fd966dccaab33f4dca1ef}} 
+\index{com.github.hegdahl.inf101v2022.Game.View@{com.github.hegdahl.inf101v2022.Game.View}!paint@{paint}}
+\index{paint@{paint}!com.github.hegdahl.inf101v2022.Game.View@{com.github.hegdahl.inf101v2022.Game.View}}
+\doxysubsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily abstract void com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+View.\+paint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer}{Screen\+Buffer}}}]{canvas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Creates frames of the game state of the model (should be stored by the descendant class to avoid type casting).
+
+
+\begin{DoxyParams}{Parameters}
+{\em canvas} & where to store the frame \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_ac3ddfad10417c3e93f01c4d527fe95a9}\label{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View_ac3ddfad10417c3e93f01c4d527fe95a9}} 
+\index{com.github.hegdahl.inf101v2022.Game.View@{com.github.hegdahl.inf101v2022.Game.View}!userIndex@{userIndex}}
+\index{userIndex@{userIndex}!com.github.hegdahl.inf101v2022.Game.View@{com.github.hegdahl.inf101v2022.Game.View}}
+\doxysubsubsection{\texorpdfstring{userIndex}{userIndex}}
+{\footnotesize\ttfamily final int com.\+github.\+hegdahl.\+inf101v2022.\+Game.\+View.\+user\+Index\hspace{0.3cm}{\ttfamily [protected]}}
+
+Number in \mbox{[}0, number\+Of\+Players) representing which user uses this view to request frames. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/github/hegdahl/inf101v2022/Game.\+java\end{DoxyCompactItemize}

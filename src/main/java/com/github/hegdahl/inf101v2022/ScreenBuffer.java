@@ -1,14 +1,21 @@
 package com.github.hegdahl.inf101v2022;
 
+/**
+ * Stores colored characters
+ * for displaying in a terminal.
+ */
 public class ScreenBuffer {
 
+  /**
+   * Color represented by red green and blue.
+   */
   public static class Color {
     public final int red;
     public final int green;
     public final int blue;
 
     /**
-     * Color represented by red, green and blue
+     * Construct a color from red green and blue
      * values in the range [0, 256).
     */
     public Color(int red, int green, int blue) {
@@ -23,6 +30,9 @@ public class ScreenBuffer {
     }
   }
 
+  /**
+   * Stores a single colored character.
+   */
   public static class Cell {
     public final char ch;
     Color foreground;
@@ -85,11 +95,29 @@ public class ScreenBuffer {
     return cells[0].length;
   }
 
+  /**
+   * Get a cell from the buffer.
+   * 
+   * <p>Uses 0-based indexing in the coordinate.
+   * 
+   * @param row    which row to find the cell in
+   * @param column which column to find the cell in
+   * @return the cell in the `row`-th row and `colmn`-th column.
+   */
   public Cell get(int row, int column) {
     assertWithinBounds(row, column);
     return cells[row][column];
   }
 
+  /**
+   * Set a cell in the buffer.
+   * 
+   * <p>Uses 0-based indexing in the coordinate.
+   * 
+   * @param row    which row to set the cell in
+   * @param column which column to set the cell in
+   * @param cell   the new cell value to set
+   */
   public void set(int row, int column, Cell cell) {
     assertWithinBounds(row, column);
     cells[row][column] = cell;
