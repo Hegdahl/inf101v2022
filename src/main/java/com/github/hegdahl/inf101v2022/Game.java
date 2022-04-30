@@ -11,6 +11,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+/**
+ * Master object for holding a model, view, and controller
+ * specified a descendant class.
+ */
 public abstract class Game {
   
   public interface Model {
@@ -119,8 +123,10 @@ public abstract class Game {
   }
 
   /**
-   * Master object for holding a model, view, and controller
-   * specified a descendant class.
+   * Constructs the game in
+   * a lobby-like state where
+   * new connections are allowed
+   * until the game starts.
    */
   public Game() {
     usernames = new HashMap<>();
@@ -271,13 +277,22 @@ public abstract class Game {
   /**
    * Inform the game that a new user connected.
    * 
+   * <p>Does nothing if the game has already started.
+   * 
    * @param id       unique id representing the user
    * @param username name picked by the user,
    *                 not neccesarily unique.
+   * 
+   * @return true if the registration succeeded.
    */
-  public final synchronized void registerUser(int id, String username) {
+  public final synchronized boolean registerUser(int id, String username) {
+    if (model != null) {
+      return false;
+    }
+
     usernames.put(id, username);
     incrementVersion();
+    return true;
   }
 
   /**

@@ -57,7 +57,22 @@ public class Host implements Main.SubcommandHandler {
       System.err.printf("\"%s\" connected from %s:%s\n",
           username, socket.getInetAddress(), socket.getPort());
 
-      game.registerUser(id, username);
+      if (!game.registerUser(id, username)) {
+        System.err.println("Could not register the user.");
+        reader.close();
+        try {
+          writer.close();
+        } catch (IOException e) {
+          System.err.println("Failed closing writer.");
+        }
+        try {
+          socket.close();
+        } catch (IOException e) {
+          System.err.println("Failed closing socket.");
+        }
+        return;
+      }
+
       KeyReciever keyRecieverThread = new KeyReciever(id, game, reader, exitLatch);
       ScreenSender screenSenderThread = new ScreenSender(id, game, writer, exitLatch);
 
