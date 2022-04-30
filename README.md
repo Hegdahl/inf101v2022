@@ -65,6 +65,9 @@ With maven installed, it should work to run `./build.sh`.
 
 This will build the project itself in addition to every game in the folder `/src/games`.
 
+The main executable will be called `inf101v2022.out`.
+
+
 ## Windows
 
 With maven installed, run `mvn package`.
@@ -72,7 +75,19 @@ With maven installed, run `mvn package`.
 This will build an executable .jar file which is the host and join program,
 and also functions as the library when building a game.
 
+The path for the jar file will be `target\inf101v2022-{version}-SNAPSHOT-jar-with-dependencies.jar`.
+I suggest making a copy with a shorter name in the base of the directory.
+
 To build a game, run
-```cmd
-javac path\to\the\game.java -d where\to\put\the\game -cp path\to\the\.jar
+```powershell
+javac path\to\the\game.java -d where\to\put\the\game -cp the_jar_file.jar
 ```
+
+The jar can not be ran directly in the terminal,
+but is instead ran like this
+```powershell
+java -jar the_jar_file.jar args
+```
+
+where args are arguemnts as described in the `--help` outputs
+at the start of this document.
