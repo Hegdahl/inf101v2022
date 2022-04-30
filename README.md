@@ -4,6 +4,8 @@ This program allows you to host or join
 a board game with rules according to
 a class that extends `Game`.
 
+[Documentation](https://hegdahl.github.io/inf101v2022/html/annotated.html)
+
 ```bash
 ./inf101v2022 --help
 ```
