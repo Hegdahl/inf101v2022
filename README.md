@@ -55,3 +55,24 @@ named arguments:
 # Example Usage
 
 https://user-images.githubusercontent.com/48063801/166123263-654e20c4-46f6-46b9-9857-e18ebd5340dd.mp4
+
+
+# Building
+
+## Linux (and probably but not tested MacOS)
+
+With maven installed, it should work to run `./build.sh`.
+
+This will build the project itself in addition to every game in the folder `/src/games`.
+
+## Windows
+
+With maven installed, run `mvn package`.
+
+This will build an executable .jar file which is the host and join program,
+and also functions as the library when building a game.
+
+To build a game, run
+```cmd
+javac path\to\the\game.java -d where\to\put\the\game -cp path\to\the\.jar
+```
