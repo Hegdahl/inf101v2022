@@ -51,3 +51,7 @@ named arguments:
   -h, --help             show this help message and exit
   -p PORT, --port PORT   Which port to connect to.
 ```
+
+# Example Usage
+
+https://user-images.githubusercontent.com/48063801/166123263-654e20c4-46f6-46b9-9857-e18ebd5340dd.mp4
