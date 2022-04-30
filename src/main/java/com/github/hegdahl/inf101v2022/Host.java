@@ -1,5 +1,8 @@
 package com.github.hegdahl.inf101v2022;
 
+import com.github.hegdahl.inf101v2022.connection.KeyReciever;
+import com.github.hegdahl.inf101v2022.connection.ScreenSender;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,9 +17,6 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
-
-import com.github.hegdahl.inf101v2022.connection.KeyReciever;
-import com.github.hegdahl.inf101v2022.connection.ScreenSender;
 
 import net.sourceforge.argparse4j.inf.Namespace;
 
