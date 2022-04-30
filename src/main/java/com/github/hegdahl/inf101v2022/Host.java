@@ -12,54 +12,77 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
+import java.util.concurrent.CountDownLatch;
 
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
+import com.github.hegdahl.inf101v2022.connection.KeyReciever;
+import com.github.hegdahl.inf101v2022.connection.ScreenSender;
 
 import net.sourceforge.argparse4j.inf.Namespace;
 
 public class Host implements Main.SubcommandHandler {
 
-  class ClientHandler implements Runnable {
-    Game game;
-    String username;
-    Scanner reader;
-    BufferedWriter writer;
+  class ClientHandler extends Thread {
+    private static int nextID = 0;
 
-    ClientHandler(Game game, String username, Scanner reader, BufferedWriter writer) {
+    public final int id;
+    private Game game;
+    private Socket socket;
+    private CountDownLatch exitLatch;
+
+    public ClientHandler(Game game, Socket socket) {
+      id = nextID++;
       this.game = game;
-      this.username = username;
-      this.reader = reader;
-      this.writer = writer;
+      this.socket = socket;
+      exitLatch = new CountDownLatch(1);
     }
 
+    public void close() {
+      exitLatch.countDown();
+    }
+
+    @Override
     public void run() {
+      Scanner reader = null;
+      BufferedWriter writer = null;
       try {
-
-        boolean isChar = reader.next().equals("c");
-
-        KeyStroke keyStroke = null;
-        if (isChar)
-          keyStroke = KeyStroke.fromString(reader.next());
-        else
-          keyStroke =new KeyStroke(KeyType.values()[reader.nextInt()]);
-          
-        System.err.println(keyStroke);
-
-        writer.write("0\n");
-        writer.flush();
-
-        reader.close();
-        writer.close();
+        reader = new Scanner(new BufferedReader(new InputStreamReader(socket.getInputStream())));
+        writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
       } catch (IOException e) {
+        System.err.println("Failed opening streams for " + id + ".");
+        return;
+      }
+
+      String username = reader.nextLine();
+      System.err.printf("\"%s\" connected from %s:%s\n",
+          username, socket.getInetAddress(), socket.getPort());
+
+      game.setUsername(id, username);
+      KeyReciever keyRecieverThread = new KeyReciever(id, game, reader);
+      ScreenSender screenSenderThread = new ScreenSender(id, game, writer);
+
+      keyRecieverThread.start();
+      screenSenderThread.start();
+
+      try {
+        exitLatch.await();
+      } catch (InterruptedException e) {
+      }
+
+      screenSenderThread.close();
+      keyRecieverThread.close();
+
+      try {
+        screenSenderThread.join();
+      } catch (InterruptedException e) {
+      }
+
+      try {
+        keyRecieverThread.join();
+      } catch (InterruptedException e) {
       }
     }
-
-  };
+  }
 
   @Override
   public void main(Namespace ns) throws IOException {
@@ -103,48 +126,25 @@ public class Host implements Main.SubcommandHandler {
       System.exit(1);
     }
 
-    final int minPlayers = game.minPlayers();
-    final int maxPlayers = game.maxPlayers();
-
     short port = ns.getShort("port");
 
     ServerSocket serverSocket = new ServerSocket(port);
     System.out.println("Listening on port " + port);
 
-    ArrayList<Thread> threads = new ArrayList<>();
+    ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
 
-    AtomicInteger nConnected = new AtomicInteger(0);
-    AtomicInteger nReady = new AtomicInteger(0);
-
-    Supplier<Boolean> ready = () -> {
-      int num = nReady.get();
-      int den = nConnected.get();
-      if (num != den)
-        return false;
-      return minPlayers <= num && num <= maxPlayers;
-    };
-
-    while (!ready.get()) {
-      Socket clientSocket = serverSocket.accept();
-      Scanner reader = new Scanner(new BufferedReader(new InputStreamReader(clientSocket.getInputStream())));
-      BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-
-      try {
-        String username = reader.nextLine();
-        System.err.printf("\"%s\" connected from %s:%s\n",
-            username, clientSocket.getInetAddress(), clientSocket.getPort());
-
-        Thread thread = new Thread(new ClientHandler(game, username, reader, writer));
-        thread.start();
-        threads.add(thread);
-      } catch (NoSuchElementException e) {
-      } catch (IllegalStateException e) {
-      }
+    while (!game.finished()) {
+      ClientHandler clientHandler = new ClientHandler(game, serverSocket.accept());
+      clientHandler.start();
+      clientHandlers.add(clientHandler);
     }
 
-    for (Thread thread : threads) {
+    for (ClientHandler clientHandler : clientHandlers)
+      clientHandler.close();
+
+    for (ClientHandler clientHandler : clientHandlers) {
       try {
-        thread.join();
+        clientHandler.join();
       } catch (InterruptedException e) {
       }
     }

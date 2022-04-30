@@ -1,5 +1,10 @@
 package com.github.hegdahl.inf101v2022;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.googlecode.lanterna.input.KeyStroke;
+
 public abstract class Game {
   
   public interface Model {
@@ -18,14 +23,19 @@ public abstract class Game {
   abstract protected View makeView(int playerIndex);
   abstract protected Controller makeController(int playerIndex);
 
-  abstract protected int minPlayers();
-  abstract protected int maxPlayers();
+  abstract public int minPlayers();
+  abstract public int maxPlayers();
+  
+  abstract public int screenWidth();
+  abstract public int screenHeight();
 
   protected Model model;
   protected View[] views;
   protected Controller[] controllers;
 
-  public void init(int numberOfPlayers) {
+  private Map<Integer, String> usernames;
+
+  public final void init(int numberOfPlayers) {
     if (minPlayers() > numberOfPlayers || numberOfPlayers > maxPlayers())
       throw new IllegalArgumentException("Number of players must be in [0, 1]");
 
@@ -37,6 +47,35 @@ public abstract class Game {
       views[playerIndex] = makeView(playerIndex);
       controllers[playerIndex] = makeController(playerIndex);
     }
+  }
+
+  public Game() {
+    usernames = new HashMap<>();
+  }
+
+  public final void trigger(int id, KeyStroke keyStroke) {
+    System.err.println("Game::trigger " + id + ":" + keyStroke);
+  }
+
+  public final boolean paint(int id, ScreenBuffer canvas) {
+    System.err.println("Game::paint " + id + ":" + canvas);
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+    }
+    return true;
+  }
+
+  public final void setUsername(int id, String username) {
+    usernames.put(id, username);
+  }
+
+  public final String getUsername(int id) {
+    return usernames.get(id);
+  }
+
+  public final boolean finished() {
+    return false;
   }
 
 }

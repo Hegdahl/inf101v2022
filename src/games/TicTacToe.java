@@ -5,13 +5,23 @@ import com.github.hegdahl.inf101v2022.Game;
 public class TicTacToe extends Game {
 
   @Override
-  protected int minPlayers() {
+  public int minPlayers() {
     return 2;
   }
 
   @Override
-  protected int maxPlayers() {
+  public int maxPlayers() {
     return 2;
+  }
+
+  @Override
+  public int screenHeight() {
+    return 3;
+  }
+
+  @Override
+  public int screenWidth() {
+    return 6;
   }
 
   class Model implements Game.Model {
@@ -26,17 +36,16 @@ public class TicTacToe extends Game {
     }
 
     private boolean checkWon(PlayerTag player) {
-      outer:
-      for (int row = 0; row < 3; ++row) {
+
+      outer: for (int row = 0; row < 3; ++row) {
         for (int col = 0; col < 3; ++col)
           if (board[row][col] != player)
             continue outer;
         return true;
       }
 
-      outer:
-      for (int col = 0; col < 3; ++col)
-        for (int row = 0; row < 3; ++row) {
+      outer: for (int col = 0; col < 3; ++col) {
+        for (int row = 0; row < 3; ++row)
           if (board[row][col] != player)
             continue outer;
         return true;
