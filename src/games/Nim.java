@@ -3,6 +3,8 @@ import com.github.hegdahl.inf101v2022.ScreenBuffer;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
+import java.util.Random;
+
 import java.util.function.Supplier;
 
 import javax.swing.plaf.metal.MetalBorders.PaletteBorder;
@@ -37,13 +39,15 @@ public class Nim extends Game {
     private int turns;
     private int focusedRow;
     private int focusedCount;
-    
+    private Random rng;
+
     Model(int numberOfPlayers) {
       againstAI = numberOfPlayers == 1;
-      rows = new int[]{1, 3, 5, 7};
+      rows = new int[] { 1, 3, 5, 7 };
       turns = 0;
       focusedRow = 0;
       focusedCount = 0;
+      rng = new Random();
     }
 
     int height() {
@@ -110,13 +114,54 @@ public class Nim extends Game {
 
       int newFocusedCount = Math.max(0, Math.min(rows[focusedRow],
           focusedCount + delta));
-      
+
       if (newFocusedCount == focusedCount) {
         return false;
       }
 
       focusedCount = newFocusedCount;
       return true;
+    }
+
+    void aiStep() {
+      int xor = 0;
+      for (int row : rows) {
+        xor ^= row;
+      }
+
+      int row = 0;
+      int cnt = 0;
+
+      if (xor == 0) {
+        // losing position
+        // do something random
+
+        row = rng.nextInt(height());
+        while (rows[row] == 0) {
+          row = rng.nextInt(height());
+        }
+
+        cnt = rng.nextInt(rows[row]) + 1;
+      } else {
+        // winning position
+        // pick a random among winning moves
+
+        boolean found = false;
+        while (!found) {
+          row = rng.nextInt(height());
+          for (cnt = 1; cnt <= rows[row]; ++cnt) {
+            if ((xor ^ rows[row] ^ (rows[row] - cnt)) == 0) {
+              found = true;
+              break;
+            }
+          }
+        }
+      }
+
+      focusedRow = row;
+      focusedCount = 0;
+      rows[row] -= cnt;
+      ++turns;
     }
 
     boolean attemptTurn(int userIndex) {
@@ -131,6 +176,10 @@ public class Nim extends Game {
       rows[focusedRow] -= focusedCount;
       focusedCount = 0;
       ++turns;
+
+      if (againstAI && userIndex == 0) {
+        aiStep();
+      }
 
       return true;
     }
@@ -182,7 +231,7 @@ public class Nim extends Game {
       } else {
         canvas.write(focusedRow + 1, 0,
             "[", blue, black);
-        canvas.write(focusedRow + 1,  2 * focusedCount,
+        canvas.write(focusedRow + 1, 2 * focusedCount,
             "]", blue, black);
         for (int j = 0; j < focusedCount; ++j) {
           canvas.write(focusedRow + 1, 2 * j + 1, "*", blue, black);
