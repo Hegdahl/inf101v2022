@@ -50,10 +50,13 @@ public class KeyReciever extends Thread {
       while (!Thread.currentThread().isInterrupted()) {
         
         KeyStroke keyStroke = null;
-        if (reader.next().equals("c")) {
+        String keyStart = reader.next();
+        if (keyStart.equals("c")) {
           keyStroke = KeyStroke.fromString(reader.next());
-        } else {
+        } else if (keyStart.equals("s")) {
           keyStroke = new KeyStroke(KeyType.values()[reader.nextInt()]);
+        } else {
+          keyStroke = KeyStroke.fromString(" ");
         }
         
         game.triggerKey(id, keyStroke);

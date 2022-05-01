@@ -52,7 +52,11 @@ public class KeySender extends Thread {
       KeyType keyType = keyStroke.getKeyType();
       String keyStr = null;
       if (keyType == KeyType.Character) {
-        keyStr = "c " + keyStroke.getCharacter() + '\n';
+        if (keyStroke.getCharacter() == ' ') {
+          keyStr = "_\n";
+        } else {
+          keyStr = "c " + keyStroke.getCharacter() + '\n';
+        }
       } else {
         keyStr = "s " + keyType.ordinal() + '\n';
       }
