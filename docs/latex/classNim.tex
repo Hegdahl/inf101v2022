@@ -1,0 +1,112 @@
+\hypertarget{classNim}{}\doxysection{Nim Class Reference}
+\label{classNim}\index{Nim@{Nim}}
+Inheritance diagram for Nim\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classNim}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Controller}
+\item 
+class {\bfseries Model}
+\item 
+class {\bfseries View}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classNim_a27d276b77c14045e1569bb17e0f8fc23}{min\+Players}} ()
+\item 
+int \mbox{\hyperlink{classNim_ab9ec379c53372179f72e85983b655080}{max\+Players}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Game.\+Model \mbox{\hyperlink{classNim_a593054a97875f38971329557d8437762}{make\+Model}} (int number\+Of\+Players)
+\item 
+Game.\+View \mbox{\hyperlink{classNim_ac89fbc1fd87274bbc0a8adedd224d915}{make\+View}} (Game.\+Model model, int user\+Index)
+\item 
+Game.\+Controller \mbox{\hyperlink{classNim_a04f7aa112e1cfeb49a6028f2db551cfc}{make\+Controller}} (Game.\+Model model, int user\+Index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classNim}{Nim}}, a single player game to play against the computer or another humam (easy to make a bot for).
+
+The game consists of several rows of tokens.
+
+In one turn you may remove any positive number of tokens tokens as long as they are from the same row.
+
+The one to remove the last token wins. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNim_a04f7aa112e1cfeb49a6028f2db551cfc}\label{classNim_a04f7aa112e1cfeb49a6028f2db551cfc}} 
+\index{Nim@{Nim}!makeController@{makeController}}
+\index{makeController@{makeController}!Nim@{Nim}}
+\doxysubsubsection{\texorpdfstring{makeController()}{makeController()}}
+{\footnotesize\ttfamily Game.\+Controller Nim.\+make\+Controller (\begin{DoxyParamCaption}\item[{Game.\+Model}]{model,  }\item[{int}]{user\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Wrapper for the Controller constructor. The cast is safe because the given model is guaranteed to be made from {\ttfamily make\+Model}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Model created by {\ttfamily make\+Model}. \\
+\hline
+{\em user\+Index} & Which user will use the created controller. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNim_a593054a97875f38971329557d8437762}\label{classNim_a593054a97875f38971329557d8437762}} 
+\index{Nim@{Nim}!makeModel@{makeModel}}
+\index{makeModel@{makeModel}!Nim@{Nim}}
+\doxysubsubsection{\texorpdfstring{makeModel()}{makeModel()}}
+{\footnotesize\ttfamily Game.\+Model Nim.\+make\+Model (\begin{DoxyParamCaption}\item[{int}]{number\+Of\+Players }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Wrapper for the constructor of the {\ttfamily Model} implementation of the game.
+
+It is used to allow type safe dynamic loading of game rules. 
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a895c1d118e2bfa3ba76373641085a55e}{com.\+github.\+hegdahl.\+inf101v2022.\+Game}}.
+
+\mbox{\Hypertarget{classNim_ac89fbc1fd87274bbc0a8adedd224d915}\label{classNim_ac89fbc1fd87274bbc0a8adedd224d915}} 
+\index{Nim@{Nim}!makeView@{makeView}}
+\index{makeView@{makeView}!Nim@{Nim}}
+\doxysubsubsection{\texorpdfstring{makeView()}{makeView()}}
+{\footnotesize\ttfamily Game.\+View Nim.\+make\+View (\begin{DoxyParamCaption}\item[{Game.\+Model}]{model,  }\item[{int}]{user\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Wrapper for the View constructor. The cast is safe because the given model is guaranteed to be made from {\ttfamily make\+Model}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Model created by {\ttfamily make\+Model}. \\
+\hline
+{\em user\+Index} & Which user will use the created view. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNim_ab9ec379c53372179f72e85983b655080}\label{classNim_ab9ec379c53372179f72e85983b655080}} 
+\index{Nim@{Nim}!maxPlayers@{maxPlayers}}
+\index{maxPlayers@{maxPlayers}!Nim@{Nim}}
+\doxysubsubsection{\texorpdfstring{maxPlayers()}{maxPlayers()}}
+{\footnotesize\ttfamily int Nim.\+max\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets a maximum for how many players there can be in a single game. 
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_aeaf559a78c629b3c26bc611187a030aa}{com.\+github.\+hegdahl.\+inf101v2022.\+Game}}.
+
+\mbox{\Hypertarget{classNim_a27d276b77c14045e1569bb17e0f8fc23}\label{classNim_a27d276b77c14045e1569bb17e0f8fc23}} 
+\index{Nim@{Nim}!minPlayers@{minPlayers}}
+\index{minPlayers@{minPlayers}!Nim@{Nim}}
+\doxysubsubsection{\texorpdfstring{minPlayers()}{minPlayers()}}
+{\footnotesize\ttfamily int Nim.\+min\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets a minimum for how many players there can be in a single game. 
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_a9fe92308a20c28f383c5d2268d3c1e2d}{com.\+github.\+hegdahl.\+inf101v2022.\+Game}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/games/Nim.\+java\end{DoxyCompactItemize}

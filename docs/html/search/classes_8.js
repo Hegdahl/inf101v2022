@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['view_0',['View',['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View.html',1,'com::github::hegdahl::inf101v2022::Game']]]
+  ['tictactoe_0',['TicTacToe',['../classTicTacToe.html',1,'']]]
 ];

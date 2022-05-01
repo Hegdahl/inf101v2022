@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['width_0',['width',['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer.html#a56fd3280deba8e98b8942d3e136919b8',1,'com::github::hegdahl::inf101v2022::ScreenBuffer']]],
-  ['write_1',['write',['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1ScreenBuffer.html#afc0e5e6f20079dd27695c2d652662c3d',1,'com::github::hegdahl::inf101v2022::ScreenBuffer']]]
+  ['view_0',['View',['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View.html',1,'com.github.hegdahl.inf101v2022.Game.View'],['../classcom_1_1github_1_1hegdahl_1_1inf101v2022_1_1Game_1_1View.html#ae999b8dfcc0b810722359e9256f94c2e',1,'com.github.hegdahl.inf101v2022.Game.View.View()']]]
 ];
