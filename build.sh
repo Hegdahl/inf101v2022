@@ -8,7 +8,7 @@ cat target/*-jar-with-dependencies.jar >> $EXECUTABLE
 chmod +x $EXECUTABLE
 
 for game in src/games/*.java ; do
-  echo -n "Building ${ruleset} ..."
+  echo -n "Building ${game} ..."
   javac $game -d games -cp $EXECUTABLE && echo " ok"
 done
 
